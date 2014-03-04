@@ -1,12 +1,9 @@
 var ks = require('./ks')
-  , options = {
-      url: 'http://www.kickstarter.com/projects/maxtemkin/philosophy-posters'
-    };
-    
-var project = new ks.project(options);
+  , options = {url: 'http://www.kickstarter.com/projects/maxtemkin/philosophy-posters'}
+  , project = new ks.project(options);
 
-// test location fetch
+// fetch location, funding, general, and time
 project.getLocation().getFunding().getGeneral().getTime(function(err, data) {
-	if(err) throw err;
-	console.log(data);
+  if(err) throw err;
+  console.log(data);
 });
