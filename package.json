@@ -1,5 +1,5 @@
 {
-  "name":"kickstarter-crawler-thingy",
+  "name":"kickstarter-crawler",
   "version":"0.1.0",
   "description":"Access over 40 different data points for a given project using this dynamic kickstarter crawler.",
   "main":"ks.js",
