@@ -3,7 +3,7 @@
   "version":"0.1.0",
   "description":"Access over 40 different data points for a given project using this dynamic kickstarter crawler.",
   "main":"ks.js",
-  "homepage":"https://github.com/jaredhalpert/hacks/tree/master/kickstarter-crawler-thing",
+  "homepage":"https://github.com/ghostsnstuff/hacks/tree/master/kickstarter-crawler",
   "authors":"Jared Halpert <jaredhalpert90@gmail.com> (https://github.com/ghostsnstuff)",
   "keywords":["kickstarter",
 	      "crawler",
