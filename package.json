@@ -1,21 +1,23 @@
 {
-	"name":"kickstarter-crawler-thingy",
-	"version":"0.1.0",
-	"description":"Access over 40 different data points for a given project using this dynamic kickstarter crawler.",
+	"name":"kickstarter-crawler",
+	"version":"0.0.3",
+	"description":"Crawls a given kickstarter project page. Returns over 40 data points.",
 	"main":"ks.js",
-	"homepage":"https://github.com/jaredhalpert/hacks/tree/master/kickstarter-crawler-thing",
-	"authors":"Jared Halpert <jaredhalpert90@gmail.com> (https://github.com/jaredhalpert)",
+	"homepage":"https://github.com/ghostsnstuff/kickstarter-crawler",
+	"authors":"Jared Halpert <jaredhalpert90@gmail.com> (https://github.com/ghostsnstuff)",
 	"keywords":[
 			"kickstarter",
 			"crawler",
-			"thingy",
+			"thing",
 			"crowdfunding",
-			"spider"	
+			"data",
+      "spider"	
 	],
 	"license":"MIT",
 	"dependencies": {
     "request": ">= 0.0.1",
-    "cheerio": ">= 0.0.12"
+    "cheerio": ">= 0.0.12",
+    "colors":"*"
   },
   "devDependencies": {},
   "optionalDependencies": {},

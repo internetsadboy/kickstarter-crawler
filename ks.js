@@ -1,2 +1,2 @@
-var ks = module.exports;
-ks.project = require('./lib/project');
+var ks = module.exports
+ks.project = require('./lib/project')
