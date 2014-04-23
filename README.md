@@ -7,6 +7,8 @@
 
     npm install kickstarter-crawler
 
+#### example
+
 ```javascript
 var ks = require('./ks');
 var options = {
