@@ -3,7 +3,7 @@
 1. does some magic
 2. bugs that need fixing === facebook, location, and other
 
-## installation
+### installation
 
     npm install kickstarter-crawler
 
@@ -25,12 +25,12 @@ project.request(function(err, data) {
 #### output
 
 ```javascript
-{ general_title: '',
+{ general_title: 'Philosophy Posters',
   general_creator: 'Max Temkin',
   general_parentCategory: 'Design',
   general_subCategory: 'Graphic Design',
-  general_avatar: undefined,
-  general_projectUrl: 'http://www.kickstarter.comundefined',
+  general_avatar: 'https://s3.amazonaws.com/ksr/avatars/21469/JanaAvatar_big.small.jpg?1348789612',
+  general_projectUrl: 'http://www.kickstarter.com/projects/maxtemkin/philosophy-posters',
   general_creatorUrl: 'http://www.kickstarter.com/projects/maxtemkin/philosophy-posters/creator_bio',
   time_days: 30,
   time_start: 1333555639000,
