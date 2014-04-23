@@ -1,5 +1,8 @@
 ### kickstarter crawler
 
+1. does some magic
+2. bugs that need fixing === facebook, location, and other
+
 ## installation
 
     npm install kickstarter-crawler
