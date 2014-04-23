@@ -8,7 +8,6 @@
     npm install kickstarter-crawler
 
 #### example
-
 ```javascript
 var ks = require('./ks');
 var options = {
@@ -25,7 +24,6 @@ project.request(function(err, data) {
 ```
 
 #### output
-
 ```javascript
 { general_title: 'Philosophy Posters',
   general_creator: 'Max Temkin',
