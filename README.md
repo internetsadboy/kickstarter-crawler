@@ -10,14 +10,14 @@ returns over 36 data points (if you include individual pledge-related data)
 ```javascript
 var ks = require('./ks');
 var options = {
-	url:'https://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android',
-	fields:['general','time','funding','location','other','facebook','media','pledges'],
-	log:false
+  url:'https://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android',
+  fields:['general','time','funding','location','other','facebook','media','pledges'],
+  log:false
 };
 var project = new ks.project(options);
 project.request(function(err, data) {
-	if(err) throw err;
-	console.log(data);
+  if(err) throw err;
+  console.log(data);
 });
 ```
 
