@@ -70,7 +70,7 @@ project.request(function(err, data) {
   pledges_number: 11,
   pledges_limited: false,
   pledges_percentLimited: 0.00,
-  pledges_amounts: '1 99 115 125 220 235 240 550 1000 1250 10000',
+  pledges_amounts: [1, 99, 115, 125, 220, 235, 240, 550, 1000, 1250, 10000],
   pledges_data: 
    { 0: 
 	  { amount: 1,
