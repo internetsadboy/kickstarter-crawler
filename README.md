@@ -175,8 +175,7 @@ project.request(function(err, data) {
 
 ### log
 this may tickle your fancy if you like logging stuff
-
-setting <code>log:true</code> will generate output like so 
+\nsetting <code>log:true</code> will generate output like so 
 
 
 ![](./log.png?raw=true)
