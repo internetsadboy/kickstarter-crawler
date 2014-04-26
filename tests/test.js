@@ -44,7 +44,7 @@ test('kickstarter-crawl *stuff*'.green, function(t) {
 		t.deepEqual(data['pledges_number'], 11);
 		t.deepEqual(data['pledges_limited'], false);
 		t.deepEqual(data['pledges_percentLimited'], 0.00);
-		t.deepEqual(data['pledges_amounts'],'1 99 115 125 220 235 240 550 1000 1250 10000');
+		t.deepEqual(data['pledges_amounts'], [1, 99, 115, 125, 220, 235, 240, 550, 1000, 1250, 10000]);
 		t.deepEqual(data['media_pictures'], ['https://s3.amazonaws.com/ksr/projects/111694/photo-main.jpg?1397775461',
 		      'https://s3.amazonaws.com/ksr/assets/001/050/169/d4444d863d4dd7f9ff333a6f0f12b94a_large.jpg?1381463121',
 		      'https://s3.amazonaws.com/ksr/assets/001/050/170/44ceedb61fa1de6b0a98f838620c1345_large.jpg?1381463122',
