@@ -13,14 +13,17 @@
 			"data",
       "spider"	
 	],
+	"scripts": {
+		"test":"node tests/test.js"
+	},
 	"license":"MIT",
 	"dependencies": {
     "request": ">= 0.0.1",
     "cheerio": ">= 0.0.12",
-    "colors":"*"
+    "colors":"*",
+    "tape":"*"
   },
   "devDependencies": {},
-  "optionalDependencies": {},
   "engines": {
     "node": "*"
   }
