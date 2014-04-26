@@ -18,10 +18,10 @@
    },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ghostsnstuff/cheeto.git"
+    "url": "https://github.com/ghostsnstuff/kickstarter-crawler.git"
   },
   "bugs": {
-    "url": "https://github.com/ghostsnstuff/cheeto/issues"
+    "url": "https://github.com/ghostsnstuff/kickstarter-crawler/issues"
   },
   "license":"MIT",
   "dependencies": {
