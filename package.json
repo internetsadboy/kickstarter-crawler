@@ -1,7 +1,7 @@
 {
   "name":"kickstarter-crawler",
   "version":"0.0.6",
-  "description":"Crawls a given kickstarter project page. Returns over 36 data points.",
+  "description":"Kickstarter bot - returns over 36 data points.",
   "main":"ks.js",
   "homepage":"https://github.com/ghostsnstuff/kickstarter-crawler",
   "authors":"Jared Halpert <jaredhalpert90@gmail.com> (https://github.com/ghostsnstuff)",
