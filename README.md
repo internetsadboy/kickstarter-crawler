@@ -7,12 +7,10 @@ returns over 35 + n data points (where n is the number of pledges)
     npm install kickstarter-crawler
 
 ### Features
-Pass an `options` argument to an instance of `ks.project` to configure your crawl
+Pass an `options` argument to an instance of `ks.project` to configure the crawl
 
-`url` {String} kickstarter project url
-
-`fields` {Array} array of project data-fields
-
+`url` {String} kickstarter project url</br>
+`fields` {Array} array of project data-fields</br>
 fields:
 * general
 * time
