@@ -9,8 +9,8 @@ returns over 35 + n data points (where n is the number of pledges)
 ### Features
 Pass an `options` argument to an instance of `ks.project` to configure your crawl
 
-`url` {String} kickstarter project url</br>
-`fields` {Array} array of project data-fields</br>
+`url` {String} kickstarter project url
+`fields` {Array} array of project data-fields
 
 fields:
 * general
