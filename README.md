@@ -1,8 +1,8 @@
-### kickstarter crawler
+### kickstarter-crawler
 
 returns 35 + n data points (where n is the number of pledges)
 
-### installation
+### Installation
 
     npm install kickstarter-crawler
 
@@ -88,7 +88,7 @@ project.request(function(err, data) {
   pledges_percentLimited: 0.00,
   pledges_amounts: [1, 99, 115, 125, 220, 235, 240, 550, 1000, 1250, 10000],
   pledges_data: 
-   { 0: 
+	{0: 
 	  { amount: 1,
 	    num_backers: 2615,
 	    pledge_percentage: 3.79,
@@ -189,10 +189,21 @@ project.request(function(err, data) {
       num_all_caps: 4 } } 
 ```
 
-### log
-
-this may tickle your fancy if you like logging stuff<br>
-setting <code>log:true</code> will generate output like so 
-
-
-![](./log.png?raw=true)
+### Methods
+`request` makes a request to the defined kickstarter url, takes a `callback(err,data)` as an argument<br>
+`getTitle` returns the title<br>
+`getCreator` returns the creator's name
+`getParentCategory` returns the category
+`getSubCategory` returns the sub-category
+`getAvatar` returns the avatar url
+`getProjectUrl` returns the project url
+`getCreatorUrl` returns the creator's url
+`getDays` returns the project's duration (number of days)
+`getStartTime` returns the project's start time
+`getEndTime` returns the project's end time
+`getDollarsRaised` returns the amount of money raised
+`getFundingGoal` returns the project's goal
+`getPercentRaised` returns the percent raised
+`getCurrency` returns the currency
+`getSuccess` returns a boolean
+`getBackers` returns the number of backers
