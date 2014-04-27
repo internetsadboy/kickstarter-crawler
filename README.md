@@ -192,18 +192,18 @@ project.request(function(err, data) {
 ### Methods
 `request` makes a request to the defined kickstarter url, takes a `callback(err,data)` as an argument<br>
 `getTitle` returns the title<br>
-`getCreator` returns the creator's name
-`getParentCategory` returns the category
-`getSubCategory` returns the sub-category
-`getAvatar` returns the avatar url
-`getProjectUrl` returns the project url
-`getCreatorUrl` returns the creator's url
-`getDays` returns the project's duration (number of days)
-`getStartTime` returns the project's start time
-`getEndTime` returns the project's end time
-`getDollarsRaised` returns the amount of money raised
-`getFundingGoal` returns the project's goal
-`getPercentRaised` returns the percent raised
-`getCurrency` returns the currency
-`getSuccess` returns a boolean
-`getBackers` returns the number of backers
+`getCreator` returns the creator's name<br>
+`getParentCategory` returns the category<br>
+`getSubCategory` returns the sub-category<br>
+`getAvatar` returns the avatar url<br>
+`getProjectUrl` returns the project url<br>
+`getCreatorUrl` returns the creator's url<br>
+`getDays` returns the project's duration (number of days)<br>
+`getStartTime` returns the project's start time<br>
+`getEndTime` returns the project's end time<br>
+`getDollarsRaised` returns the amount of money raised<br>
+`getFundingGoal` returns the project's goal<br>
+`getPercentRaised` returns the percent raised<br>
+`getCurrency` returns the currency<br>
+`getSuccess` returns a boolean<br>
+`getBackers` returns the number of backers<br>
