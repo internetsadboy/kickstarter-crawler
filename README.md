@@ -1,14 +1,28 @@
 ### kickstarter crawler
 
-returns over 36 data points (if you include individual pledge-related data)
+returns over 35 + n data points (where n is the number of pledges)
 
 ### installation
 
     npm install kickstarter-crawler
 
+### options
+Pass an `options` argument to an instance of `ks.project` to configure your crawl
+`fields` defines an array of project data-fields to crawl
+available fields:
+	* general
+	* time
+	* funding
+	* location
+	* other
+	* facebook
+	* media
+	* pledges
+`log` logs different field data in different colors
+
 #### example
 ```javascript
-var ks = require('./ks');
+var ks = require('kickstarter-crawler');
 var options = {
   url:'https://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android',
   fields:['general','time','funding','location','other','facebook','media','pledges'],
