@@ -223,6 +223,6 @@ project.request(function(err, data) {
 `getPledgeAmounts` returns an array of the pledge amounts used<br>
 `getPledgesData` returns a nested json of individual pledge data<br>
 `getFacebookConnected` returns a boolean indicating if a facebook account was connected<br>
-`getFacebookName` returns the facebook name used (if connected)
+`getFacebookName` returns the facebook name used (if connected)<br>
 `getFacebookLink` returns the project's facebook account url<br>
 `getNumFacebookFriends` returns the number of facebook friends of the connected account<br>
