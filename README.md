@@ -6,19 +6,23 @@ returns over 35 + n data points (where n is the number of pledges)
 
     npm install kickstarter-crawler
 
-### options
+### Features
 Pass an `options` argument to an instance of `ks.project` to configure your crawl
-`fields` defines an array of project data-fields to crawl
-available fields:
-	* general
-	* time
-	* funding
-	* location
-	* other
-	* facebook
-	* media
-	* pledges
-`log` logs different field data in different colors
+
+`url` {String} kickstarter project url</br>
+`fields` {Array} array of project data-fields</br>
+
+fields:
+* general
+* time
+* funding
+* location
+* other
+* facebook
+* media
+* pledges
+
+`log` {Boolean} prints colored results
 
 #### example
 ```javascript
