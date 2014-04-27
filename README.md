@@ -191,12 +191,12 @@ project.request(function(err, data) {
 
 ### Methods
 `request` makes a request to the defined kickstarter url, takes a `callback(err,data)` as an argument<br>
-`getTitle` returns the title<br>
+`getTitle` returns the project's title<br>
 `getCreator` returns the creator's name<br>
-`getParentCategory` returns the category<br>
-`getSubCategory` returns the sub-category<br>
-`getAvatar` returns the avatar url<br>
-`getProjectUrl` returns the project url<br>
+`getParentCategory` returns the project's category<br>
+`getSubCategory` returns the project's sub-category<br>
+`getAvatar` returns the project's avatar url<br>
+`getProjectUrl` returns the project's url<br>
 `getCreatorUrl` returns the creator's url<br>
 `getDays` returns the project's duration (number of days)<br>
 `getStartTime` returns the project's start time<br>
@@ -205,5 +205,20 @@ project.request(function(err, data) {
 `getFundingGoal` returns the project's goal<br>
 `getPercentRaised` returns the percent raised<br>
 `getCurrency` returns the currency<br>
-`getSuccess` returns a boolean<br>
+`getSuccess` returns a success boolean<br>
 `getBackers` returns the number of backers<br>
+`getCity` returns the city<br>
+`getState` returns the state<br>
+`getCountry` returns the country<br>
+`getUpdates` returns the number of updates<br>
+`getComments` returns the number of comments<br>
+`getProjectsCreated` returns the number of projects done by the creator<br>
+`getProjectsBacked` returns the number of projects backed by the creator<br>
+`getWebsiteLink` returns the website url<br>
+`getWebsiteName` returns the hostname of the website<br>
+`getNumPictures` returns the number of pictures used in the project's profile page<br>
+`getPictures` returns an array of pictures used in the project<br>
+`getNumPledges` returns the number of pledges<br>
+`limitedPledges` returns a boolean indicating if limited pledges were used<br>
+`getPledgeAmounts` returns an array of the pledge amounts used<br>
+`getPledgesData` returns a nested json of individual pledge data<br>
