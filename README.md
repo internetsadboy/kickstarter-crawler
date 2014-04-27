@@ -11,6 +11,7 @@ Pass an `options` argument to an instance of `ks.project` to configure the crawl
 
 `url` {String} kickstarter project url<br>
 `fields` {Array} array of project data-fields<br>
+
 fields:
 * general
 * time
