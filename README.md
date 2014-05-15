@@ -1,5 +1,7 @@
 ### kickstarter-crawler
 
+[![NPM](https://nodei.co/npm/kickstarter-crawler.png?downloads=true)](https://nodei.co/npm/kickstarter-crawler/)
+
 returns 35 + n data points (where n is the number of pledges)
 
 ### Installation
