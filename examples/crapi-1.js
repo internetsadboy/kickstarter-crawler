@@ -1,4 +1,4 @@
-// this example prints the names, citites, and states of the first 10 projects in the crapi data set
+// this example prints the names, cities, and states of the first 10 projects in the crapi data set
 // crapi is a crowdfunding data set (kickstarter and indiegogo)
 // more information can be found at https://github.com/ghostsnstuff/crapi
 var crapi = require('crapi');
@@ -10,9 +10,7 @@ for(var i in projects) {
   brk++;
   if(brk==10) break;
   var options = {
-    url:String(projects[i]),
-    fields:[],
-    log:false
+    url:projects[i]
   }
   var project = new ks.project(options);
   project.getTitle().getCity().getState(function(err, data) {

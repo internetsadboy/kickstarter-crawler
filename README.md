@@ -10,8 +10,8 @@ analyze 61,356 kickstarter projects using [crapi](https://npmjs.org/package/crap
     npm install kickstarter-crawler
 
 ### Features
-`ks.project` {Object} project constructor
-`options` {Object} project constructor argument
+`ks.project` {Object} project constructor<br>
+`options` {Object} project constructor argument<br>
 `options.url` {String} project url<br>
 `options.fields` {Array} array of project data-fields. If undefined, data from all fields will be returned.<br>
 * general
@@ -29,7 +29,7 @@ analyze 61,356 kickstarter projects using [crapi](https://npmjs.org/package/crap
 ```javascript
 var ks = require('kickstarter-crawler');
 var options = {
-  url:'https://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android',
+  url:'https://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android'
 };
 var project = new ks.project(options);
 project.request(function(err, data) {
