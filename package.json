@@ -1,6 +1,6 @@
 {
   "name":"kickstarter-crawler",
-  "version":"0.0.7",
+  "version":"0.0.8",
   "description":"Kickstarter bot - returns over 36 data points.",
   "main":"ks.js",
   "homepage":"https://github.com/ghostsnstuff/kickstarter-crawler",
@@ -11,7 +11,7 @@
     "thing",
     "crowdfunding",
     "data",
-    "spider"	
+    "spider"
   ],
   "scripts": {
   "  test":"node tests/test.js"
@@ -28,7 +28,8 @@
     "request": ">= 0.0.1",
     "cheerio": ">= 0.0.12",
     "colors":"*",
-    "tape":"*"
+    "tape":"*",
+    "crapi":"~0.0.1"
   },
   "devDependencies": {},
   "engines": {

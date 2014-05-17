@@ -2,17 +2,18 @@
 
 [![NPM](https://nodei.co/npm/kickstarter-crawler.png?downloads=true)](https://nodei.co/npm/kickstarter-crawler/)
 
-returns 35 + n data points (where n is the number of pledges)
+returns 35 + n data points (where n is the number of pledges)<br>
+analyze 61,356 kickstarter projects using [crapi](https://npmjs.org/package/crapi) - an open crowdfunding data set
 
 ### Installation
 
     npm install kickstarter-crawler
 
 ### Features
-Pass an `options` {Object} argument to an instance of `ks.project` to configure the crawl
-
-`url` {String} kickstarter project url<br>
-`fields` {Array} array of project data-fields<br>
+`ks.project` {Object} project constructor
+`options` {Object} project constructor argument
+`options.url` {String} project url<br>
+`options.fields` {Array} array of project data-fields. If undefined, data from all fields will be returned.<br>
 * general
 * time
 * funding
@@ -22,15 +23,13 @@ Pass an `options` {Object} argument to an instance of `ks.project` to configure 
 * media
 * pledges
 
-`log` {Boolean} prints colored results
+`options.log` {Boolean} prints colored results. If undefined, `log` will be interpreted as `false`.
 
-#### example
+#### example (more in examples directory)
 ```javascript
 var ks = require('kickstarter-crawler');
 var options = {
   url:'https://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android',
-  fields:['general','time','funding','location','other','facebook','media','pledges'],
-  log:false
 };
 var project = new ks.project(options);
 project.request(function(err, data) {
@@ -71,7 +70,7 @@ project.request(function(err, data) {
   facebook_link: 'https://www.facebook.com/122600213',
   facebook_numFriends: 847,
   media_numPictures: 14,
-  media_pictures: 
+  media_pictures:
    [ 'https://s3.amazonaws.com/ksr/projects/111694/photo-main.jpg?1397775461',
      'https://s3.amazonaws.com/ksr/assets/001/050/169/d4444d863d4dd7f9ff333a6f0f12b94a_large.jpg?1381463121',
      'https://s3.amazonaws.com/ksr/assets/001/050/170/44ceedb61fa1de6b0a98f838620c1345_large.jpg?1381463122',
@@ -89,8 +88,8 @@ project.request(function(err, data) {
   pledges_limited: false,
   pledges_percentLimited: 0.00,
   pledges_amounts: [1, 99, 115, 125, 220, 235, 240, 550, 1000, 1250, 10000],
-  pledges_data: 
-	{0: 
+  pledges_data:
+	{0:
 	  { amount: 1,
 	    num_backers: 2615,
 	    pledge_percentage: 3.79,
@@ -99,7 +98,7 @@ project.request(function(err, data) {
 	    num_words: 37,
 	    words: [Object],
 	    num_all_caps: 0 },
-	 1: 
+	 1:
     { amount: 99,
       num_backers: 200,
       pledge_percentage: 0.29,
@@ -108,7 +107,7 @@ project.request(function(err, data) {
       num_words: 33,
       words: [Object],
       num_all_caps: 3 },
-   2: 
+   2:
     { amount: 115,
       num_backers: 40803,
       pledge_percentage: 59.20,
@@ -117,7 +116,7 @@ project.request(function(err, data) {
       num_words: 19,
       words: [Object],
       num_all_caps: 1 },
-   3: 
+   3:
     { amount: 125,
       num_backers: 14350,
       pledge_percentage: 20.82,
@@ -126,7 +125,7 @@ project.request(function(err, data) {
       num_words: 30,
       words: [Object],
       num_all_caps: 1 },
-   4: 
+   4:
     { amount: 220,
       num_backers: 3800,
       pledge_percentage: 5.51,
@@ -135,7 +134,7 @@ project.request(function(err, data) {
       num_words: 19,
       words: [Object],
       num_all_caps: 1 },
-   5: 
+   5:
     { amount: 235,
       num_backers: 100,
       pledge_percentage: 0.15,
@@ -144,7 +143,7 @@ project.request(function(err, data) {
       num_words: 52,
       words: [Object],
       num_all_caps: 4 },
-   6: 
+   6:
     { amount: 240,
       num_backers: 4925,
       pledge_percentage: 7.15,
@@ -153,7 +152,7 @@ project.request(function(err, data) {
       num_words: 30,
       words: [Object],
       num_all_caps: 1 },
-   7: 
+   7:
     { amount: 550,
       num_backers: 900,
       pledge_percentage: 1.31,
@@ -162,7 +161,7 @@ project.request(function(err, data) {
       num_words: 32,
       words: [Object],
       num_all_caps: 3 },
-   8: 
+   8:
     { amount: 1000,
       num_backers: 482,
       pledge_percentage: 0.70,
@@ -171,7 +170,7 @@ project.request(function(err, data) {
       num_words: 32,
       words: [Object],
       num_all_caps: 3 },
-   9: 
+   9:
     { amount: 1250,
       num_backers: 20,
       pledge_percentage: 0.03,
@@ -180,7 +179,7 @@ project.request(function(err, data) {
       num_words: 54,
       words: [Object],
       num_all_caps: 3 },
-   10: 
+   10:
     { amount: 10000,
       num_backers: 31,
       pledge_percentage: 0.04,
@@ -188,7 +187,7 @@ project.request(function(err, data) {
       delivery_year: 2012,
       num_words: 34,
       words: [Object],
-      num_all_caps: 4 } } 
+      num_all_caps: 4 } }
 ```
 
 ### Methods
