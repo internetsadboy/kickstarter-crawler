@@ -3,7 +3,7 @@
 [![NPM](https://nodei.co/npm/kickstarter-crawler.png?downloads=true)](https://nodei.co/npm/kickstarter-crawler/)
 
 returns 35 + n data points (where n is the number of pledges)<br>
-analyze 61,356 kickstarter projects using [crapi](https://npmjs.org/package/crapi) - an open crowdfunding data set
+analyze 61,356 kickstarter projects using [crapi](https://github.com/ghostsnstuff/crapi) - an open crowdfunding data set
 
 ### Installation
 
