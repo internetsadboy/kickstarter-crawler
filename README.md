@@ -17,10 +17,10 @@ analyze 61,356 kickstarter projects using [crapi](https://github.com/ghostsnstuf
 * ### [Methods](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#methods)
 
 ### Features
-##### `ks.project` {Object} project constructor<br>
-##### `options` {Object} constructor's argument<br>
-##### `options.url` {String} project url<br>
-##### `options.fields` {Array} array of project data-fields. If *undefined*, data from *all* fields will be returned.<br>
+ `ks.project` {Object} project constructor<br>
+ `options` {Object} constructor's argument<br>
+ `options.url` {String} project url<br>
+ `options.fields` {Array} array of project data-fields. If *undefined*, data from *all* fields will be returned.<br>
 * general
 * time
 * funding
@@ -30,14 +30,15 @@ analyze 61,356 kickstarter projects using [crapi](https://github.com/ghostsnstuf
 * media
 * pledges
 
-##### `options.log` {Boolean} logs colorful json. If undefined, `log` will be interpreted as `false`.
-##### `options.hits` {Boolean} accounts for uncrawlable edge cases. Returns a json with the following properties.
-* `complete` {Number} `%` indicates how *"complete"* the data set is
+ `options.log` {Boolean} logs colorful json. If undefined, `log` will be interpreted as `false`.
+ `options.hits` {Boolean} accounts for uncrawlable edge cases. Returns a json with the following properties.
+* `complete` {Number} % indicates how *"complete"* the data set is
 * `miss` {Object} includes *uncrawlable* data points
 * `hits` {Object} includes crawled data points
+
 ##### `callback(err,data)` {Function} always pass it to the final method being called.
 
-#### examples
+#### Examples
 
 find out how much money the kickstarter project *philosophy posters* raised
 ```javascript
@@ -52,7 +53,6 @@ project.getDollarsRaised(function(err,data) {
 })
 ```
 output
-
 ```javascript
 { funding_dollarsRaised: 41167.74 }
 ```
@@ -73,14 +73,12 @@ project
   })
 ```
 output
-
 ```javascript
 { general_creator: 'Max Temkin',
   location_city: 'chicago',
   funding_dollarsRaised: 41167.74,
   general_category: 'Design' }
 ```
-
 `request` will return data points corresponding to the fields defined in `options`
 ```javascript
 var ks = require('kickstarter-crawler')
@@ -95,7 +93,6 @@ project.request(function(err, data) {
 })
 ```
 output
-
 ```javascript
 { general_title: 'Pebble: E-Paper Watch for iPhone and Android',
   general_creator: 'Pebble Technology',
@@ -114,7 +111,6 @@ output
   funding_successful: true,
   funding_backers: 68929 }
 ```
-
 more with `request`, if `fields` is `undefined`, all data points will be returned
 ```javascript
 var ks = require('kickstarter-crawler')
@@ -127,12 +123,11 @@ project.request(function(err, data) {
   console.log(data)
 })
 ```
-
 output
 ```javascript
 { general_title: 'Pebble: E-Paper Watch for iPhone and Android',
   general_creator: 'Pebble Technology',
-  general_parentCategory: 'Design',
+  general_category: 'Design',
   general_subCategory: 'Product Design',
   general_avatar: 'https://s3.amazonaws.com/ksr/avatars/469081/icon.small.jpg?1334094010',
   general_projectUrl: 'http://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android',
@@ -153,11 +148,11 @@ output
   other_comments: 15804,
   other_projectsCreated: 1,
   other_projectsBacked: 52,
-  other_websiteLink: 'http://www.getpebble.com',
+  other_websiteUrl: 'http://www.getpebble.com',
   other_websiteName: 'getpebble',
   facebook_connected: true,
   facebook_name: 'Eric Migicovsky',
-  facebook_link: 'https://www.facebook.com/122600213',
+  facebook_url: 'https://www.facebook.com/122600213',
   facebook_numFriends: 847,
   media_numPictures: 14,
   media_pictures:
@@ -284,23 +279,20 @@ output
 
   Usage: `ks <url> <fields>`
 
-  `url` {String} kickstarter project url
-  `fields` {Strings} general, time, funding, other, pledges, media, facebook, location
+  `url` {String} kickstarter project url<br>
+  `fields` {Strings} general, time, funding, other, pledges, media, facebook, location<br>
 
-  * leaving fields undefined will fetch all fields
+  * leaving fields undefined will fetch all fields<br>
 
   Options:
-
-  `v` version
-  `h` help
-  `e` example
+  `v` version<br>
+  `h` help<br>
+  `e` example<br>
 
   Example:
-
   ```javascript
   ks https://www.kickstarter.com/projects/maxtemkin/philosophy-posters general location
   ```
-
   Output:
   ```javascript
   { general_title: 'Philosophy Posters',
