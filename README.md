@@ -285,14 +285,15 @@ output
   * leaving fields undefined will fetch all fields<br>
 
   Options<br>
-  `v` version<br>
-  `h` help<br>
-  `e` example<br>
+
+  Usage `ks -option`<br>
+
+    `-v` version<br>
+    `-h` help<br>
+    `-e` example<br>
 
   Example
-  ```javascript
-  ks https://www.kickstarter.com/projects/maxtemkin/philosophy-posters general location
-  ```
+      ks https://www.kickstarter.com/projects/maxtemkin/philosophy-posters general location
   Output
   ```javascript
   { general_title: 'Philosophy Posters',
