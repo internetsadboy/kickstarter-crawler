@@ -11,10 +11,10 @@ analyze 61,356 kickstarter projects using [crapi](https://github.com/ghostsnstuf
 
 
 ### Getting Started
-* ### [Features](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#features)
-* ### [Examples](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#examples)
-* ### [CLI](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#cli)
-* ### [Methods](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#methods)
+[Features](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#features)
+[Examples](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#examples)
+[CLI](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#cli)
+[Methods](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#methods)
 
 ### Features
  `ks.project` {Object} project constructor<br>
@@ -30,7 +30,7 @@ analyze 61,356 kickstarter projects using [crapi](https://github.com/ghostsnstuf
 * media
 * pledges
 
- `options.log` {Boolean} logs colorful json. If undefined, `log` will be interpreted as `false`.
+ `options.log` {Boolean} logs colorful json. If undefined, `log` will be interpreted as `false`.<br>
  `options.hits` {Boolean} accounts for uncrawlable edge cases. Returns a json with the following properties.
 * `complete` {Number} % indicates how *"complete"* the data set is
 * `miss` {Object} includes *uncrawlable* data points
