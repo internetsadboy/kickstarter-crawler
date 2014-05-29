@@ -11,13 +11,10 @@ analyze 61,356 kickstarter projects using [crapi](https://github.com/ghostsnstuf
 
 
 ### Getting Started
-[Features](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#features)
-
-[Examples](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#examples)
-
-[CLI](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#cli)
-
-[Methods](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#methods)
+[Features](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#features)<br>
+[Examples](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#examples)<br>
+[CLI](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#cli)<br>
+[Methods](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#methods)<br>
 
 ### Features
  `ks.project` {Object} project constructor<br>
@@ -39,9 +36,9 @@ analyze 61,356 kickstarter projects using [crapi](https://github.com/ghostsnstuf
 * `miss` {Object} includes *uncrawlable* data points
 * `hits` {Object} includes crawled data points
 
-`callback(err,data)` {Function} always pass it to the final method being called
+`callback(err,data)` {Function} always gets passed to the final method being called
 
-#### Examples
+### Examples
 
 find out how much money the kickstarter project *philosophy posters* raised
 ```javascript
@@ -280,23 +277,23 @@ output
 
 ### CLI
 
-  Usage: `ks <url> <fields>`
+  Usage `ks <url> <fields>`
 
   `url` {String} kickstarter project url<br>
   `fields` {Strings} general, time, funding, other, pledges, media, facebook, location<br>
 
   * leaving fields undefined will fetch all fields<br>
 
-  Options:<br>
+  Options<br>
   `v` version<br>
   `h` help<br>
   `e` example<br>
 
-  Example:
+  Example
   ```javascript
   ks https://www.kickstarter.com/projects/maxtemkin/philosophy-posters general location
   ```
-  Output:
+  Output
   ```javascript
   { general_title: 'Philosophy Posters',
     general_creator: 'Max Temkin',
