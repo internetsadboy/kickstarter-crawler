@@ -7,13 +7,20 @@ analyze 61,356 kickstarter projects using [crapi](https://github.com/ghostsnstuf
 
 ### Installation
 
-    npm install kickstarter-crawler
+    npm install kickstarter-crawler -g
+
+
+### Getting Started
+* ### [Features](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#features)
+* ### [Examples](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#examples)
+* ### [CLI](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#cli)
+* ### [Methods](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#methods)
 
 ### Features
-`ks.project` {Object} project constructor<br>
-`options` {Object} project constructor argument<br>
-`options.url` {String} project url<br>
-`options.fields` {Array} array of project data-fields. If undefined, data from all fields will be returned.<br>
+##### `ks.project` {Object} project constructor<br>
+##### `options` {Object} constructor's argument<br>
+##### `options.url` {String} project url<br>
+##### `options.fields` {Array} array of project data-fields. If *undefined*, data from *all* fields will be returned.<br>
 * general
 * time
 * funding
@@ -23,9 +30,92 @@ analyze 61,356 kickstarter projects using [crapi](https://github.com/ghostsnstuf
 * media
 * pledges
 
-`options.log` {Boolean} prints colored results. If undefined, `log` will be interpreted as `false`.
+##### `options.log` {Boolean} logs colorful json. If undefined, `log` will be interpreted as `false`.
+##### `options.hits` {Boolean} accounts for uncrawlable edge cases. Returns a json with the following properties.
+* `complete` {Number} `%` indicates how *"complete"* the data set is
+* `miss` {Object} includes *uncrawlable* data points
+* `hits` {Object} includes crawled data points
+##### `callback(err,data)` {Function} always pass it to the final method being called.
 
-#### example (more in examples directory)
+#### examples
+
+find out how much money the kickstarter project *philosophy posters* raised
+```javascript
+var ks = require('kickstarter-crawler')
+var options = {
+  url:'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters'
+}
+var project = new ks.project(options)
+project.getDollarsRaised(function(err,data) {
+  if(err) throw err
+  console.log(data)
+})
+```
+output
+
+```javascript
+{ funding_dollarsRaised: 41167.74 }
+```
+method chaining
+```javascript
+var ks = require('kickstarter-crawler')
+var options = {
+  url:'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters'
+}
+var project = new ks.project(options)
+project
+  .getCreator()
+  .getCity()
+  .getDollarsRaised()
+  .getCategory(function(err,data) {
+    if(err) throw err
+    console.log(data)
+  })
+```
+output
+
+```javascript
+{ general_creator: 'Max Temkin',
+  location_city: 'chicago',
+  funding_dollarsRaised: 41167.74,
+  general_category: 'Design' }
+```
+
+`request` will return data points corresponding to the fields defined in `options`
+```javascript
+var ks = require('kickstarter-crawler')
+var options = {
+  url:'https://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android',
+  fields:['general','location','funding']
+}
+var project = new ks.project(options)
+project.request(function(err, data) {
+  if(err) throw err
+  console.log(data)
+})
+```
+output
+
+```javascript
+{ general_title: 'Pebble: E-Paper Watch for iPhone and Android',
+  general_creator: 'Pebble Technology',
+  general_category: 'Design',
+  general_subCategory: 'Product Design',
+  general_avatar: 'https://s3.amazonaws.com/ksr/avatars/469081/icon.small.jpg?1334094010',
+  general_projectUrl: 'http://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android',
+  general_creatorUrl: 'http://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android/creator_bio',
+  location_city: 'palo alto',
+  location_state: 'ca',
+  location_country: 'usa',
+  funding_dollarsRaised: 10266845.74,
+  funding_fundingGoal: 100000,
+  funding_percentRaised: 10266.85,
+  funding_currency: 'USD',
+  funding_successful: true,
+  funding_backers: 68929 }
+```
+
+more with `request`, if `fields` is `undefined`, all data points will be returned
 ```javascript
 var ks = require('kickstarter-crawler')
 var options = {
@@ -38,7 +128,7 @@ project.request(function(err, data) {
 })
 ```
 
-#### output
+output
 ```javascript
 { general_title: 'Pebble: E-Paper Watch for iPhone and Android',
   general_creator: 'Pebble Technology',
@@ -190,11 +280,46 @@ project.request(function(err, data) {
       num_all_caps: 4 } }
 ```
 
+### CLI
+
+  Usage: `ks <url> <fields>`
+
+  `url` {String} kickstarter project url
+  `fields` {Strings} general, time, funding, other, pledges, media, facebook, location
+
+  * leaving fields undefined will fetch all fields
+
+  Options:
+
+  `v` version
+  `h` help
+  `e` example
+
+  Example:
+
+  ```javascript
+  ks https://www.kickstarter.com/projects/maxtemkin/philosophy-posters general location
+  ```
+
+  Output:
+  ```javascript
+  { general_title: 'Philosophy Posters',
+    general_creator: 'Max Temkin',
+    general_category: 'Design',
+    general_subCategory: 'Graphic Design',
+    general_avatar: 'https://s3.amazonaws.com/ksr/avatars/21469/JanaAvatar_big.small.jpg?1348789612',
+    general_projectUrl: 'http://www.kickstarter.com/projects/maxtemkin/philosophy-posters',
+    general_creatorUrl: 'http://www.kickstarter.com/projects/maxtemkin/philosophy-posters/creator_bio',
+    location_city: 'chicago',
+    location_state: 'il',
+    location_country: 'usa' }
+  ```
+
 ### Methods
 `request` makes a request to the defined kickstarter url, takes a `callback(err,data)` as an argument<br>
 `getTitle` returns the project's title<br>
 `getCreator` returns the creator's name<br>
-`getParentCategory` returns the project's category<br>
+`getCategory` returns the project's category<br>
 `getSubCategory` returns the project's sub-category<br>
 `getAvatar` returns the project's avatar url<br>
 `getProjectUrl` returns the project's url<br>
@@ -215,7 +340,7 @@ project.request(function(err, data) {
 `getComments` returns the number of comments<br>
 `getProjectsCreated` returns the number of projects done by the creator<br>
 `getProjectsBacked` returns the number of projects backed by the creator<br>
-`getWebsiteLink` returns the website url<br>
+`getWebsiteUrl` returns the website url<br>
 `getWebsiteName` returns the hostname of the website<br>
 `getNumPictures` returns the number of pictures used in the project's profile page<br>
 `getPictures` returns an array of pictures used in the project<br>
@@ -225,5 +350,5 @@ project.request(function(err, data) {
 `getPledgesData` returns a nested json of individual pledge data<br>
 `getFacebookConnected` returns a boolean indicating if a facebook account was connected<br>
 `getFacebookName` returns the facebook name used (if connected)<br>
-`getFacebookLink` returns the connected facebook account url<br>
+`getFacebookUrl` returns the connected facebook account url<br>
 `getNumFacebookFriends` returns the number of facebook friends of the connected account<br>
