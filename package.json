@@ -34,7 +34,7 @@
   },
   "preferGlobal":"true",
   "bin": {
-    "ks":"cli.js"
+    "ks":"./lib/cli.js"
   },
   "devDependencies": {},
   "engines": {
