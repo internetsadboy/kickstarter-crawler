@@ -1,12 +1,8 @@
 {
   "name":"kickstarter-crawler",
-  "version":"0.0.14",
+  "version":"0.0.16",
   "description":"kickstarter bot - returns over 36 data points.",
   "main":"ks.js",
-  "preferGlobal":"true",
-  "bin": {
-    "ks":"cli.js"
-  },
   "homepage":"https://github.com/ghostsnstuff/kickstarter-crawler",
   "authors":"Jared Halpert <jaredhalpert90@gmail.com> (https://github.com/ghostsnstuff)",
   "keywords":[
@@ -35,6 +31,10 @@
     "colors":"*",
     "tape":"*",
     "crapi":"~0.0.1"
+  },
+  "preferGlobal":"true",
+  "bin": {
+    "ks":"cli.js"
   },
   "devDependencies": {},
   "engines": {
