@@ -12,8 +12,11 @@ analyze 61,356 kickstarter projects using [crapi](https://github.com/ghostsnstuf
 
 ### Getting Started
 [Features](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#features)
+
 [Examples](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#examples)
+
 [CLI](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#cli)
+
 [Methods](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#methods)
 
 ### Features
@@ -30,13 +33,13 @@ analyze 61,356 kickstarter projects using [crapi](https://github.com/ghostsnstuf
 * media
 * pledges
 
- `options.log` {Boolean} logs colorful json. If undefined, `log` will be interpreted as `false`.<br>
- `options.hits` {Boolean} accounts for uncrawlable edge cases. Returns a json with the following properties.
+`options.log` {Boolean} logs colorful json. If undefined, `log` will be interpreted as `false`.<br>
+`options.hits` {Boolean} accounts for uncrawlable edge cases. Returns a json with the following properties.
 * `complete` {Number} % indicates how *"complete"* the data set is
 * `miss` {Object} includes *uncrawlable* data points
 * `hits` {Object} includes crawled data points
 
-##### `callback(err,data)` {Function} always pass it to the final method being called.
+`callback(err,data)` {Function} always pass it to the final method being called
 
 #### Examples
 
@@ -284,7 +287,7 @@ output
 
   * leaving fields undefined will fetch all fields<br>
 
-  Options:
+  Options:<br>
   `v` version<br>
   `h` help<br>
   `e` example<br>
