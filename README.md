@@ -293,7 +293,7 @@ output
     `-e` example<br>
 
   Example<br>
-  ```ks https://www.kickstarter.com/projects/maxtemkin/philosophy-posters general location```
+  `ks https://www.kickstarter.com/projects/maxtemkin/philosophy-posters general location`<br>
   Output
   ```javascript
   { general_title: 'Philosophy Posters',
