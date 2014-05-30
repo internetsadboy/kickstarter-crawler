@@ -292,8 +292,8 @@ output
     `-h` help<br>
     `-e` example<br>
 
-  Example
-      ks https://www.kickstarter.com/projects/maxtemkin/philosophy-posters general location
+  Example<br>
+  `ks https://www.kickstarter.com/projects/maxtemkin/philosophy-posters general location`
   Output
   ```javascript
   { general_title: 'Philosophy Posters',
