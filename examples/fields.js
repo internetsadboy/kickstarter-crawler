@@ -23,13 +23,13 @@
  *   funding_backers: 68929 }
  */
 
- var ks = require('kickstarter-crawler')
+ var ks = require('kickstarter-crawler');
  var options = {
    url:'https://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android',
    fields:['general','location','funding']
- }
- var project = new ks.project(options)
+ };
+ var project = new ks.project(options);
  project.request(function(err, data) {
-   if(err) throw err
-   console.log(data)
- })
+   if(err) throw err;
+   console.log(data);
+ });

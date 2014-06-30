@@ -11,11 +11,11 @@
  *   general_category: 'Design' }
  */
 
-var ks = require('kickstarter-crawler')
+var ks = require('kickstarter-crawler');
 var options = {
-  url:'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters'
-}
-var project = new ks.project(options)
+  url:'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters';
+};
+var project = new ks.project(options);
 project
   .getCreator()
   .getCity()
@@ -23,4 +23,4 @@ project
   .getCategory(function(err,data) {
     if(err) throw err
     console.log(data)
-  })
+  });
