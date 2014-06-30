@@ -310,6 +310,7 @@ output
 
 ### Methods
 `request` makes a request to the defined kickstarter url, takes a `callback(err,data)` as an argument<br>
+`parse` process the response body of a request made to a kickstarter url<br>
 `getTitle` returns the project's title<br>
 `getCreator` returns the creator's name<br>
 `getCategory` returns the project's category<br>
