@@ -1,3 +1,1 @@
-var ks = {};
-ks.project = require('./lib/project');
-module.exports = ks;
+module.exports.project = require('./lib/project');
