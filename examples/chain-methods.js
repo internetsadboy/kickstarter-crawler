@@ -1,26 +1,39 @@
-/*
- * example
- * =======
- *   - chaining methods
- *   - pass the callback(err,data) to the last method
- * output
- * ======
- * { general_creator: 'Max Temkin',
- *   location_city: 'chicago',
- *   funding_dollarsRaised: 41167.74,
- *   general_category: 'Design' }
- */
+'use strict';
 
-var ks = require('kickstarter-crawler');
-var options = {
-  url:'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters';
+var KS_CRAWLER = require('../ks');
+
+
+var project, config;
+
+
+/**
+ * Initialize the kickstarter project's configurations
+ */
+config = {
+  url: 'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters'
 };
-var project = new ks.project(options);
+
+
+/**
+ * Create an instance of the kickstarter crawler
+ * @param  {Object}  config
+ */
+project = new KS_CRAWLER.project(config);
+
+
+/**
+ * Chain several project property methods together
+ * The last method requires a callback
+ */
 project
   .getCreator()
   .getCity()
   .getDollarsRaised()
-  .getCategory(function(err,data) {
-    if(err) throw err
-    console.log(data)
+  .getCategory(function onCrawl (err, data) {
+
+    if (err) {
+      console.log(err);
+    }
+
+    console.log(data);
   });
