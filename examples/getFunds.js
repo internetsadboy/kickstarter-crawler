@@ -1,19 +1,46 @@
-/*
- * example
- * =======
- *   - single method getFundsRaised()
- *   - pass the method the callback(err,data)
- * output
- * ======
- * { funding_dollarsRaised: 41167.74 }
- */
+'use strict';
 
-var ks = require('kickstarter-crawler');
-var options = {
-  url:'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters'
+var KS_CRAWLER = require('kickstarter-crawler');
+
+
+var config, project;
+
+/**
+ * Define the project's configurations
+ *
+ * @param  {String}  url  kickstarter project url
+ */
+config = {
+  url: 'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters'
 };
-var project = new ks.project(options);
-project.getDollarsRaised(function(err,data) {
-  if(err) throw err;
-  console.log(data);
-});
+
+
+/**
+ * Create an instance of the kickstarter crawler
+ * Initialize the project's configurations
+ *
+ * @param  {Object}  config
+ */
+project = new KS_CRAWLER.project(config);
+
+
+/**
+ * Crawl the project's dollars raised value
+ *
+ * @param  {Function}  onEnd  binary callback
+ */
+project.getDollarsRaised(onEnd);
+
+
+/**
+ * onEnd   project's callback (post crawl)
+ *
+ * @param  {Object}  err
+ * @param  {Object}  datum
+ */
+function onEnd (err, datum)
+{
+  if (err) { throw err; }
+
+  console.log(datum);
+}
