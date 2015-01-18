@@ -1,161 +1,99 @@
-var test = require('tape');
-var colors = require('colors');
-var ks = require('../ks');
-var project = new ks.project({
-	url:'https://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android',
-	fields:['general','time','funding','location','other','facebook','media','pledges'],
-	log:false
-});
+'use strict';
 
-test('kickstarter-crawl *stuff*'.green, function(t) {
-	t.plan(36);
-	project.request(function(err, data) {
-		if(err) throw err;
-		t.deepEqual(data['general_title'], 'Pebble: E-Paper Watch for iPhone and Android');
-		t.deepEqual(data['general_creator'], 'Pebble Technology');
-		t.deepEqual(data['general_parentCategory'], 'Design');
-		t.deepEqual(data['general_subCategory'], 'Product Design');
-		t.deepEqual(data['general_avatar'], 'https://s3.amazonaws.com/ksr/avatars/469081/icon.small.jpg?1334094010');
-		t.deepEqual(data['general_projectUrl'], 'http://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android');
-		t.deepEqual(data['general_creatorUrl'], 'http://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android/creator_bio');
-		t.deepEqual(data['time_days'], 37.917314814814816);
-		t.deepEqual(data['time_start'], 1334120344000);
-		t.deepEqual(data['time_end'], 1337396400000);
-		t.deepEqual(data['funding_dollarsRaised'], 10266845.74);
-		t.deepEqual(data['funding_fundingGoal'], 100000.0);
-		t.deepEqual(data['funding_percentRaised'], 10266.85);
-		t.deepEqual(data['funding_currency'], 'USD');
-		t.deepEqual(data['funding_successful'], true);
-		t.deepEqual(data['funding_backers'], 68929);
-		t.deepEqual(data['location_city'], 'palo alto');
-		t.deepEqual(data['location_state'], 'ca');
-		t.deepEqual(data['location_country'], 'usa');
-		t.deepEqual(data['other_updates'], 52);
-		t.deepEqual(data['other_comments'], 15804);
-		t.deepEqual(data['other_projectsCreated'], 1);
-		t.deepEqual(data['other_projectsBacked'], 52);
-		t.deepEqual(data['other_websiteLink'], 'http://www.getpebble.com');
-		t.deepEqual(data['other_websiteName'], 'getpebble');
-		t.deepEqual(data['facebook_connected'], true);
-		t.deepEqual(data['facebook_name'], 'Eric Migicovsky');
-		t.deepEqual(data['facebook_link'], 'https://www.facebook.com/122600213');
-		t.deepEqual(data['facebook_numFriends'], 847);
-		t.deepEqual(data['media_numPictures'], 14);
-		t.deepEqual(data['pledges_number'], 11);
-		t.deepEqual(data['pledges_limited'], false);
-		t.deepEqual(data['pledges_percentLimited'], 0.00);
-		t.deepEqual(data['pledges_amounts'], [1, 99, 115, 125, 220, 235, 240, 550, 1000, 1250, 10000]);
-		t.deepEqual(data['media_pictures'], ['https://s3.amazonaws.com/ksr/projects/111694/photo-main.jpg?1397775461',
-		      'https://s3.amazonaws.com/ksr/assets/001/050/169/d4444d863d4dd7f9ff333a6f0f12b94a_large.jpg?1381463121',
-		      'https://s3.amazonaws.com/ksr/assets/001/050/170/44ceedb61fa1de6b0a98f838620c1345_large.jpg?1381463122',
-		      'https://s3.amazonaws.com/ksr/assets/001/050/171/ddba8e25abf0d24a174e6f0e0e041dc3_large.jpg?1381463124',
-		      'https://s3.amazonaws.com/ksr/assets/001/050/172/84fbcdd37830c2a437cf6430675c9382_large.jpg?1381463125',
-		      'https://s3.amazonaws.com/ksr/assets/001/050/173/b9dc587dd191cbaecac2d43e27103f9b_large.jpg?1381463126',
-		      'https://s3.amazonaws.com/ksr/assets/001/050/174/cc54c32abecd4d8083b2eb79e62222a0_large.jpg?1381463127',
-		      'https://s3.amazonaws.com/ksr/assets/001/050/175/76c95a4cd4d5d3b64e5488594bd73e7a_large.jpg?1381463129',
-		      'https://s3.amazonaws.com/ksr/assets/001/050/176/31f84589e227fd118a37b4be2b42a7d3_large.jpg?1381463130',
-		      'https://s3.amazonaws.com/ksr/assets/001/050/177/b47bd30276886aca166f1600d6341f6c_large.jpg?1381463132',
-		      'https://s3.amazonaws.com/ksr/assets/001/050/178/81dca91c61c1ceab2c480865d6e37cdf_large.jpg?1381463133',
-		      'https://s3.amazonaws.com/ksr/assets/001/050/179/28d6814f309ea289f847c69cf91194c6_large.gif?1381463134',
-		      'https://s3.amazonaws.com/ksr/avatars/469081/icon.small.jpg?1334094010' ]);
-		t.skip(data['pledges_data'], { 0: 
-																	  { amount: 1,
-																	    num_backers: 2615,
-																	    pledge_percentage: 3.79,
-																	    delivery_month: 'Sep',
-																	    delivery_year: 2012,
-																	    num_words: 37,
-																	    words: [Object],
-																	    num_all_caps: 0 },
-																	 1: 
-															      { amount: 99,
-															        num_backers: 200,
-															        pledge_percentage: 0.29,
-															        delivery_month: 'Sep',
-															        delivery_year: 2012,
-															        num_words: 33,
-															        words: [Object],
-															        num_all_caps: 3 },
-															     2: 
-															      { amount: 115,
-															        num_backers: 40803,
-															        pledge_percentage: 59.20,
-															        delivery_month: 'Sep',
-															        delivery_year: 2012,
-															        num_words: 19,
-															        words: [Object],
-															        num_all_caps: 1 },
-															     3: 
-															      { amount: 125,
-															        num_backers: 14350,
-															        pledge_percentage: 20.82,
-															        delivery_month: 'Sep',
-															        delivery_year: 2012,
-															        num_words: 30,
-															        words: [Object],
-															        num_all_caps: 1 },
-															     4: 
-															      { amount: 220,
-															        num_backers: 3800,
-															        pledge_percentage: 5.51,
-															        delivery_month: 'Sep',
-															        delivery_year: 2012,
-															        num_words: 19,
-															        words: [Object],
-															        num_all_caps: 1 },
-															     5: 
-															      { amount: 235,
-															        num_backers: 100,
-															        pledge_percentage: 0.15,
-															        delivery_month: 'Aug',
-															        delivery_year: 2012,
-															        num_words: 52,
-															        words: [Object],
-															        num_all_caps: 4 },
-															     6: 
-															      { amount: 240,
-															        num_backers: 4925,
-															        pledge_percentage: 7.15,
-															        delivery_month: 'Sep',
-															        delivery_year: 2012,
-															        num_words: 30,
-															        words: [Object],
-															        num_all_caps: 1 },
-															     7: 
-															      { amount: 550,
-															        num_backers: 900,
-															        pledge_percentage: 1.31,
-															        delivery_month: 'Sep',
-															        delivery_year: 2012,
-															        num_words: 32,
-															        words: [Object],
-															        num_all_caps: 3 },
-															     8: 
-															      { amount: 1000,
-															        num_backers: 482,
-															        pledge_percentage: 0.70,
-															        delivery_month: 'Sep',
-															        delivery_year: 2012,
-															        num_words: 32,
-															        words: [Object],
-															        num_all_caps: 3 },
-															     9: 
-															      { amount: 1250,
-															        num_backers: 20,
-															        pledge_percentage: 0.03,
-															        delivery_month: 'Sep',
-															        delivery_year: 2012,
-															        num_words: 54,
-															        words: [Object],
-															        num_all_caps: 3 },
-															     10: 
-															      { amount: 10000,
-															        num_backers: 31,
-															        pledge_percentage: 0.04,
-															        delivery_month: 'Sep',
-															        delivery_year: 2012,
-															        num_words: 34,
-															        words: [Object],
-															        num_all_caps: 4 } } );
-	});	  
+
+var assert = require('assert'),
+    colors = require('colors'),
+		KS = require('../index');
+
+
+var crawler, config;
+
+config = {
+  //url:'https://www.kickstarter.com/projects/681802762/moonraker-new-recording',
+  //url: 'https://www.kickstarter.com/projects/294531965/outdoor-public-education-centre-and-urban-garden',
+  //url:'https://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android',
+  //url: 'https://www.kickstarter.com/projects/1924218528/the-billion-dollar-hippie',
+	url: 'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters',
+	fields: ['general', 'location', 'funding', 'time', 'media', 'other', 'pledges']
+};
+
+crawler = new KS.project(config);
+
+
+crawler.request(function onRequest (err, data) {
+
+	if (err) { throw err; }
+
+	console.log(data)
+	console.log('*** TESTS PASSED ***\n'.cyan);
+
+	// Test general methods
+	assert.deepEqual(data.generalTitle, 'Philosophy Posters', '[FUNCTION] generalTitle'.red);
+	assert.deepEqual(data.generalCreator, 'Max Temkin', '[FUNCTION] generalCreator'.red);
+	assert.deepEqual(data.generalCategory, 'Design', '[FUNCTION] generalCategory'.red);
+	assert.deepEqual(data.generalSubCategory, 'Graphic Design', '[FUNCTION] generalSubCategory'.red);
+
+	assert.deepEqual(data.generalProjectURL,
+									'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters',
+									'[FUNCTION] generalProjectURL'.red);
+
+	assert.deepEqual(data.generalCreatorURL,
+									'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters/creator_bio',
+									'[FUNCTION] generalCreatorURL'.red);
+
+	assert.deepEqual(data.generalAvatarURL,
+									'https://s3.amazonaws.com/ksr/avatars/21469/JanaAvatar_big.small.jpg?1348789612',
+									'[FUNCTION] generalAvatarURL'.red);
+
+	assert.deepEqual(data.generalVideoURL,
+									'https://d2pq0u4uni88oo.cloudfront.net/projects/71739/video-84680-h264_high.mp4',
+									'[FUNCTION] generalVideoURL'.red);
+
+	// Log successful tests
+	console.log('[8/8] General'.green);
+
+	// Test location methods
+	assert.deepEqual(data.locationCity, 'Chicago', '[FUNCTION] locationCity'.red);
+	assert.deepEqual(data.locationState, 'IL', '[FUNCTION] locationState'.red);
+	assert.deepEqual(data.locationCountry, 'US', '[FUNCTION] locationCountry'.red);
+
+	// Log successful tests
+	console.log('[3/3] Location'.green);
+
+	// Test funding methods
+	assert.deepEqual(data.fundingDollarsRaised, 41167.74, '[FUNCTION] fundingDollarsRaised'.red);
+	assert.deepEqual(data.fundingGoal, 2000, '[FUNCTION] fundingGoal'.red);
+	assert.deepEqual(data.fundingPercentRaised, 2058.39, '[FUNCTION] fundingPercentRaised'.red)
+	assert.deepEqual(data.fundingCurrency, 'USD', '[FUNCTION] fundingCurrency'.red);
+	assert.deepEqual(data.fundingSuccessful, true, '[FUNCTION] fundingSuccessful'.red);
+	assert.deepEqual(data.fundingBackers, 1393, '[FUNCTION] fundingBackers'.red);
+
+	// Log successful tests
+	console.log('[6/6] Funding'.green);
+
+	// Test time methods
+	assert.deepEqual(data.timeNumDays, 30, '[FUNCTION] timeNumDays'.red);
+	assert.deepEqual(data.timeStart, 1333555639000, '[FUNCTION] timeStart'.red);
+	assert.deepEqual(data.timeEnd, 1336147639000, '[FUNCTION] timeEnd'.red);
+
+	// Log successful tests
+	console.log('[3/3] Time'.green);
+
+	// Test media methods
+	assert.deepEqual(data.mediaNumImages, 0, '[FUNCTION] mediaNumImages');
+	assert.deepEqual(data.mediaImages, [], '[FUNCTION] mediaImages');
+
+	// Log successful tests
+	console.log('[2/2] Media'.green);
+
+  // Test other methods
+  assert.deepEqual(data.otherUpdates, 23, '[FUNCTION] otherUpdates');
+  assert.deepEqual(data.otherComments, 174, '[FUNCTION] otherComments');
+  assert.deepEqual(data.otherProjectsCreated, 5, '[FUNCTION] otherProjectsCreated');
+  assert.deepEqual(data.otherProjectsBacked, 186, '[FUNCTION] otherProjectsBacked');
+  assert.deepEqual(data.otherWebsiteURL, 'http://www.Maxistentialism.com', '[FUNCTION] otherWebsiteURL');
+
+  // Log successful tests
+  console.log('[5/5] Other'.green);
+
 });

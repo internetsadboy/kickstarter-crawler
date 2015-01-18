@@ -1,6 +1,6 @@
 'use strict';
 
-var KS_CRAWLER = require('../ks');
+var KS_CRAWLER = require('../index');
 
 
 var project, config;
@@ -25,14 +25,13 @@ project = new KS_CRAWLER.project(config);
  * Chain several project property methods together
  * The last method requires a callback
  */
+
 project
-  .getCreator()
-  .getCity()
-  .getDollarsRaised()
   .getCategory(function onCrawl (err, data) {
 
     if (err) {
       console.log(err);
+      return;
     }
 
     console.log(data);
