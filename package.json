@@ -15,7 +15,7 @@
     "bot"
   ],
   "scripts": {
-    "test":"node tests/test.js"
+    "test":"node test/test.js"
    },
   "repository": {
     "type": "git",

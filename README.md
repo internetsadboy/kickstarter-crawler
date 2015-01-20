@@ -1,348 +1,225 @@
-### kickstarter-crawler
+## kickstarter-crawler
 
 [![NPM](https://nodei.co/npm/kickstarter-crawler.png?downloads=true)](https://nodei.co/npm/kickstarter-crawler/)
 
-returns 35 + n data points (where n is the number of pledges)<br>
-analyze 61,356 kickstarter projects using [crapi](https://github.com/ghostsnstuff/crapi) - an open crowdfunding data set
+##### :pizza: Returns **30 + 8n** data points - where n is the number of pledges
 
-### Installation
+##### :pizza: Analyze **61,356** kickstarter projects using [crapi](https://github.com/ghostsnstuff/crapi)
+
+## Installation
 
     npm install kickstarter-crawler -g
 
+## Test
 
-### Getting Started
-[Features](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#features)<br>
+    npm test
+
+## Getting Started
 [Examples](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#examples)<br>
-[CLI](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#cli)<br>
-[Methods](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#methods)<br>
+[API](https://github.com/ghostsnstuff/kickstarter-crawler/blob/master/README.md#API)<br>
 
-### Features
- `ks.project` {Object} project constructor<br>
- `options` {Object} constructor's argument<br>
- `options.url` {String} project url<br>
- `options.fields` {Array} array of project data-fields. If *undefined*, data from *all* fields will be returned.<br>
+
+### Examples
+
+The following example crawls a project collecting **general**, **funding**, and **location**  
+related data
+
+
+```javascript
+'use strict';
+
+
+var kickstarterCrawler = require('kickstarter-crawler');
+
+
+var config, project;
+
+
+// Project configurations
+config = {
+  url: 'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters',
+  fields: ['general', 'funding', 'location']
+};
+
+
+// Initialize the crawler
+project = new kickstarterCrawler.project(config);
+
+
+// Make request (crawl)
+project.request(function onRequest (err, data) {
+
+  // Something broke
+  if (err) {
+    console.log(err);
+    return;
+  }
+
+  // Log crawled data
+  console.log(data);
+
+});
+
+```
+
+** :pizza: MORE EXAMPLES COMING :pizza: **
+
+## API
+
+### `kickstarterCrawler.project(config)`
+* {Object} project constructor<br>
+* Initializes the crawler and exposes its interface<br><br>
+
+### `config`
+* {Object} project configurations<br>
+* Configurations necessary to instatiate the project constructor<br><br>
+
+### `config.url`
+* {String} project profile url<br><br>
+
+### `config.fields`
+* {Array} array of project data-fields, which indicate what data points will be crawled<br>
+* If *undefined*, data from *all* fields will be returned.<br>
+
+**VALID FIELD VALUES**
 * general
 * time
 * funding
 * location
 * other
-* facebook
 * media
 * pledges
 
-`options.log` {Boolean} logs colorful json. If undefined, `log` will be interpreted as `false`.<br>
-`options.hits` {Boolean} accounts for uncrawlable edge cases. Returns a json with the following properties.
-* `complete` {Number} % indicates how *"complete"* the data set is
-* `miss` {Object} includes *uncrawlable* data points
-* `hits` {Object} includes crawled data points
+### `project.request(callback)`
+* Makes a HTTP request to the respective project url<br>
+* @param `callback(err, data)` {Function}<br><br>
 
-`callback(err,data)` {Function} always gets passed to the final method being called
+### `project.parse(HTML)`
+* Parses the HTML corresponding to the respective project profile page<br>
+* Returns a nested JSON of parsed data
+* @param {String} `HTML`<br>
+* @return {Object}
 
-### Examples
+### `project.getTitle(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {String} the project's title<br><br>
 
-find out how much money the kickstarter project *philosophy posters* raised
-```javascript
-var ks = require('kickstarter-crawler')
-var options = {
-  url:'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters'
-}
-var project = new ks.project(options)
-project.getDollarsRaised(function(err,data) {
-  if(err) throw err
-  console.log(data)
-})
-```
-output
-```javascript
-{ funding_dollarsRaised: 41167.74 }
-```
-method chaining
-```javascript
-var ks = require('kickstarter-crawler')
-var options = {
-  url:'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters'
-}
-var project = new ks.project(options)
-project
-  .getCreator()
-  .getCity()
-  .getDollarsRaised()
-  .getCategory(function(err,data) {
-    if(err) throw err
-    console.log(data)
-  })
-```
-output
-```javascript
-{ general_creator: 'Max Temkin',
-  location_city: 'chicago',
-  funding_dollarsRaised: 41167.74,
-  general_category: 'Design' }
-```
-`request` will return data points corresponding to the fields defined in `options`
-```javascript
-var ks = require('kickstarter-crawler')
-var options = {
-  url:'https://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android',
-  fields:['general','location','funding']
-}
-var project = new ks.project(options)
-project.request(function(err, data) {
-  if(err) throw err
-  console.log(data)
-})
-```
-output
-```javascript
-{ general_title: 'Pebble: E-Paper Watch for iPhone and Android',
-  general_creator: 'Pebble Technology',
-  general_category: 'Design',
-  general_subCategory: 'Product Design',
-  general_avatar: 'https://s3.amazonaws.com/ksr/avatars/469081/icon.small.jpg?1334094010',
-  general_projectUrl: 'http://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android',
-  general_creatorUrl: 'http://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android/creator_bio',
-  location_city: 'palo alto',
-  location_state: 'ca',
-  location_country: 'usa',
-  funding_dollarsRaised: 10266845.74,
-  funding_fundingGoal: 100000,
-  funding_percentRaised: 10266.85,
-  funding_currency: 'USD',
-  funding_successful: true,
-  funding_backers: 68929 }
-```
-more with `request`, if `fields` is `undefined`, all data points will be returned
-```javascript
-var ks = require('kickstarter-crawler')
-var options = {
-  url:'https://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android'
-}
-var project = new ks.project(options)
-project.request(function(err, data) {
-  if(err) throw err
-  console.log(data)
-})
-```
-output
-```javascript
-{ general_title: 'Pebble: E-Paper Watch for iPhone and Android',
-  general_creator: 'Pebble Technology',
-  general_category: 'Design',
-  general_subCategory: 'Product Design',
-  general_avatar: 'https://s3.amazonaws.com/ksr/avatars/469081/icon.small.jpg?1334094010',
-  general_projectUrl: 'http://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android',
-  general_creatorUrl: 'http://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android/creator_bio',
-  time_days: 37.917314814814816,
-  time_start: 1334120344000,
-  time_end: 1337396400000,
-  funding_dollarsRaised: 10266845.74,
-  funding_fundingGoal: 100000.0,
-  funding_percentRaised: 10266.85,
-  funding_currency: 'USD',
-  funding_successful: true,
-  funding_backers: 68929,
-  location_city: 'palo alto',
-  location_state: 'ca',
-  location_country: 'usa',
-  other_updates: 52,
-  other_comments: 15804,
-  other_projectsCreated: 1,
-  other_projectsBacked: 52,
-  other_websiteUrl: 'http://www.getpebble.com',
-  other_websiteName: 'getpebble',
-  facebook_connected: true,
-  facebook_name: 'Eric Migicovsky',
-  facebook_url: 'https://www.facebook.com/122600213',
-  facebook_numFriends: 847,
-  media_numPictures: 14,
-  media_pictures:
-   [ 'https://s3.amazonaws.com/ksr/projects/111694/photo-main.jpg?1397775461',
-     'https://s3.amazonaws.com/ksr/assets/001/050/169/d4444d863d4dd7f9ff333a6f0f12b94a_large.jpg?1381463121',
-     'https://s3.amazonaws.com/ksr/assets/001/050/170/44ceedb61fa1de6b0a98f838620c1345_large.jpg?1381463122',
-     'https://s3.amazonaws.com/ksr/assets/001/050/171/ddba8e25abf0d24a174e6f0e0e041dc3_large.jpg?1381463124',
-     'https://s3.amazonaws.com/ksr/assets/001/050/172/84fbcdd37830c2a437cf6430675c9382_large.jpg?1381463125',
-     'https://s3.amazonaws.com/ksr/assets/001/050/173/b9dc587dd191cbaecac2d43e27103f9b_large.jpg?1381463126',
-     'https://s3.amazonaws.com/ksr/assets/001/050/174/cc54c32abecd4d8083b2eb79e62222a0_large.jpg?1381463127',
-     'https://s3.amazonaws.com/ksr/assets/001/050/175/76c95a4cd4d5d3b64e5488594bd73e7a_large.jpg?1381463129',
-     'https://s3.amazonaws.com/ksr/assets/001/050/176/31f84589e227fd118a37b4be2b42a7d3_large.jpg?1381463130',
-     'https://s3.amazonaws.com/ksr/assets/001/050/177/b47bd30276886aca166f1600d6341f6c_large.jpg?1381463132',
-     'https://s3.amazonaws.com/ksr/assets/001/050/178/81dca91c61c1ceab2c480865d6e37cdf_large.jpg?1381463133',
-     'https://s3.amazonaws.com/ksr/assets/001/050/179/28d6814f309ea289f847c69cf91194c6_large.gif?1381463134',
-     'https://s3.amazonaws.com/ksr/avatars/469081/icon.small.jpg?1334094010' ],
-  pledges_number: 11,
-  pledges_limited: false,
-  pledges_percentLimited: 0.00,
-  pledges_amounts: [1, 99, 115, 125, 220, 235, 240, 550, 1000, 1250, 10000],
-  pledges_data:
-	{0:
-	  { amount: 1,
-	    num_backers: 2615,
-	    pledge_percentage: 3.79,
-	    delivery_month: 'Sep',
-	    delivery_year: 2012,
-	    num_words: 37,
-	    words: [Object],
-	    num_all_caps: 0 },
-	 1:
-    { amount: 99,
-      num_backers: 200,
-      pledge_percentage: 0.29,
-      delivery_month: 'Sep',
-      delivery_year: 2012,
-      num_words: 33,
-      words: [Object],
-      num_all_caps: 3 },
-   2:
-    { amount: 115,
-      num_backers: 40803,
-      pledge_percentage: 59.20,
-      delivery_month: 'Sep',
-      delivery_year: 2012,
-      num_words: 19,
-      words: [Object],
-      num_all_caps: 1 },
-   3:
-    { amount: 125,
-      num_backers: 14350,
-      pledge_percentage: 20.82,
-      delivery_month: 'Sep',
-      delivery_year: 2012,
-      num_words: 30,
-      words: [Object],
-      num_all_caps: 1 },
-   4:
-    { amount: 220,
-      num_backers: 3800,
-      pledge_percentage: 5.51,
-      delivery_month: 'Sep',
-      delivery_year: 2012,
-      num_words: 19,
-      words: [Object],
-      num_all_caps: 1 },
-   5:
-    { amount: 235,
-      num_backers: 100,
-      pledge_percentage: 0.15,
-      delivery_month: 'Aug',
-      delivery_year: 2012,
-      num_words: 52,
-      words: [Object],
-      num_all_caps: 4 },
-   6:
-    { amount: 240,
-      num_backers: 4925,
-      pledge_percentage: 7.15,
-      delivery_month: 'Sep',
-      delivery_year: 2012,
-      num_words: 30,
-      words: [Object],
-      num_all_caps: 1 },
-   7:
-    { amount: 550,
-      num_backers: 900,
-      pledge_percentage: 1.31,
-      delivery_month: 'Sep',
-      delivery_year: 2012,
-      num_words: 32,
-      words: [Object],
-      num_all_caps: 3 },
-   8:
-    { amount: 1000,
-      num_backers: 482,
-      pledge_percentage: 0.70,
-      delivery_month: 'Sep',
-      delivery_year: 2012,
-      num_words: 32,
-      words: [Object],
-      num_all_caps: 3 },
-   9:
-    { amount: 1250,
-      num_backers: 20,
-      pledge_percentage: 0.03,
-      delivery_month: 'Sep',
-      delivery_year: 2012,
-      num_words: 54,
-      words: [Object],
-      num_all_caps: 3 },
-   10:
-    { amount: 10000,
-      num_backers: 31,
-      pledge_percentage: 0.04,
-      delivery_month: 'Sep',
-      delivery_year: 2012,
-      num_words: 34,
-      words: [Object],
-      num_all_caps: 4 } }
-```
+### `project.getCreator(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {String} the creator's name<br><br>
 
-### CLI
+### `project.getCategory(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {String} the project's category<br><br>
 
-  Usage `ks <url> <fields>`
+### `project.getSubCategory(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {String} the project's sub-category<br><br>
 
-  `url` {String} kickstarter project url<br>
-  `fields` {Strings} general, time, funding, other, pledges, media, facebook, location<br>
+### `project.getAvatar(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {String} the project's avatar url<br><br>
 
-  * leaving fields undefined will fetch all fields<br>
+### `project.getProjectUrl(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {String} the project's url<br><br>
 
-  Options<br>
+### `project.getCreatorUrl(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {String} the creator's url<br><br>
 
-  Usage `ks -option`<br>
+### `project.getProjectVideo(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {String} the project's video url<br><br>
 
-    `-v` version<br>
-    `-h` help<br>
-    `-e` example<br>
+### `project.getNumDays(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Number} the project's duration (number of days)<br><br>
 
-  Example<br>
-  `ks https://www.kickstarter.com/projects/maxtemkin/philosophy-posters general location`<br>
-  Output
-  ```javascript
-  { general_title: 'Philosophy Posters',
-    general_creator: 'Max Temkin',
-    general_category: 'Design',
-    general_subCategory: 'Graphic Design',
-    general_avatar: 'https://s3.amazonaws.com/ksr/avatars/21469/JanaAvatar_big.small.jpg?1348789612',
-    general_projectUrl: 'http://www.kickstarter.com/projects/maxtemkin/philosophy-posters',
-    general_creatorUrl: 'http://www.kickstarter.com/projects/maxtemkin/philosophy-posters/creator_bio',
-    location_city: 'chicago',
-    location_state: 'il',
-    location_country: 'usa' }
-  ```
+### `project.getStartTime(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Number} the project's start time<br><br>
 
-### Methods
-`request` makes a request to the defined kickstarter url, takes a `callback(err,data)` as an argument<br>
-`parse` process the response body of a request made to a kickstarter url<br>
-`getTitle` returns the project's title<br>
-`getCreator` returns the creator's name<br>
-`getCategory` returns the project's category<br>
-`getSubCategory` returns the project's sub-category<br>
-`getAvatar` returns the project's avatar url<br>
-`getProjectUrl` returns the project's url<br>
-`getCreatorUrl` returns the creator's url<br>
-`getDays` returns the project's duration (number of days)<br>
-`getStartTime` returns the project's start time<br>
-`getEndTime` returns the project's end time<br>
-`getDollarsRaised` returns the amount of money raised<br>
-`getFundingGoal` returns the project's goal<br>
-`getPercentRaised` returns the percent raised<br>
-`getCurrency` returns the currency<br>
-`getSuccess` returns a success boolean<br>
-`getBackers` returns the number of backers<br>
-`getCity` returns the city<br>
-`getState` returns the state<br>
-`getCountry` returns the country<br>
-`getUpdates` returns the number of updates<br>
-`getComments` returns the number of comments<br>
-`getProjectsCreated` returns the number of projects done by the creator<br>
-`getProjectsBacked` returns the number of projects backed by the creator<br>
-`getWebsiteUrl` returns the website url<br>
-`getWebsiteName` returns the hostname of the website<br>
-`getNumPictures` returns the number of pictures used in the project's profile page<br>
-`getPictures` returns an array of pictures used in the project<br>
-`getNumPledges` returns the number of pledges<br>
-`limitedPledges` returns a boolean indicating if limited pledges were used<br>
-`getPledgeAmounts` returns an array of the pledge amounts used<br>
-`getPledgesData` returns a nested json of individual pledge data<br>
-`getFacebookConnected` returns a boolean indicating if a facebook account was connected<br>
-`getFacebookName` returns the facebook name used (if connected)<br>
-`getFacebookUrl` returns the connected facebook account url<br>
-`getNumFacebookFriends` returns the number of facebook friends of the connected account<br>
+### `project.getEndTime(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Number} the project's end time<br><br>
+
+### `project.getDollarsRaised(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Number} the amount of money raised<br><br>
+
+### `project.getFundingGoal(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Number} the project's goal<br><br>
+
+### `project.getPercentRaised(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Number} the percent raised<br><br>
+
+### `project.getCurrency(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {String} the currency<br><br>
+
+### `project.getSuccess(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Boolean} a success boolean<br><br>
+
+### `project.getBackers(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Number} the number of backers<br><br>
+
+### `project.getCity(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {String} the city<br><br>
+
+### `project.getState(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {String} the state<br><br>
+
+### `project.getCountry(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {String} the country<br><br>
+
+### `project.getUpdates(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Number} the number of updates<br><br>
+
+### `project.getComments(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Number} the number of comments<br><br>
+
+### `project.getProjectsCreated(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Number} the number of projects done by the creator<br><br>
+
+### `project.getProjectsBacked(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Number} the number of projects backed by the creator<br><br>
+
+### `project.getWebsiteUrl(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {String} the website url<br><br>
+
+### `project.getNumImages(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Number} the number of images used in the project's profile page<br><br>
+
+### `project.getImages(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Array} an array of images used in the project<br><br>
+
+### `project.getNumPledges(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Number} the number of pledges<br><br>
+
+### `project.getNumLimitedPledges(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Number} the number of pledges that had limited offerings<br><br>
+
+### `project.getPledgeAmounts(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Array} an array of the pledge amounts used<br><br>
+
+### `project.getPledgesData(callback)`
+* @param {Function} `callback(err, data)`<br>
+* @return {Object} a nested json of individual pledge data<br><br>
