@@ -102,124 +102,124 @@ project.request(function onRequest (err, data) {
 
 ### `project.getTitle(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {String} the project's title<br><br>
+* `data` {Object} will consist of {String} generalTitle<br><br>
 
 ### `project.getCreator(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {String} the creator's name<br><br>
+* `data` {Object} will consist of {String} generalCreator<br><br>
 
 ### `project.getCategory(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {String} the project's category<br><br>
+* `data` {Object} will consist of {String} generalCategory<br><br>
 
 ### `project.getSubCategory(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {String} the project's sub-category<br><br>
+* `data` {Object} will consist of {String} generalSubCategory<br><br>
 
 ### `project.getAvatar(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {String} the project's avatar url<br><br>
+* `data` {Object} will consist of {String} generalProjectAvatarURL<br><br>
 
 ### `project.getProjectUrl(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {String} the project's url<br><br>
+* `data` {Object} will consist of {String} generalProjectURL<br><br>
 
 ### `project.getCreatorUrl(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {String} the creator's url<br><br>
+* `data` {Object} will consist of {String} generalCreatorURL<br><br>
 
 ### `project.getProjectVideo(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {String} the project's video url<br><br>
+* `data` {Object} will consist of {String} generalProjectVideoURL<br><br>
 
 ### `project.getNumDays(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Number} the project's duration (number of days)<br><br>
+* `data` {Object} will consist of {Number} timeNumDays<br><br>
 
 ### `project.getStartTime(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Number} the project's start time<br><br>
+* `data` {Object} will consist of {Number} timeStart<br><br>
 
 ### `project.getEndTime(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Number} the project's end time<br><br>
+* `data` {Object} will consist of {Number} timeEnd<br><br>
 
 ### `project.getDollarsRaised(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Number} the amount of money raised<br><br>
+* `data` {Object} will consist of {Number} fundingDollarsRaised<br><br>
 
 ### `project.getFundingGoal(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Number} the project's goal<br><br>
+* `data` {Object} will consist of {Number} fundingGoal<br><br>
 
 ### `project.getPercentRaised(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Number} the percent raised<br><br>
+* `data` {Object} will consist of {Number} fundingPercentRaised<br><br>
 
 ### `project.getCurrency(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {String} the currency<br><br>
+* `data` {Object} will consist of {String} fundingCurrency<br><br>
 
 ### `project.getSuccess(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Boolean} a success boolean<br><br>
+* `data` {Object} will consist of {Boolean} fundingSuccess<br><br>
 
 ### `project.getBackers(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Number} the number of backers<br><br>
+* `data` {Object} will consist of {Number} fundingNumBackers<br><br>
 
 ### `project.getCity(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {String} the city<br><br>
+* `data` {Object} will consist of {String} locationCity<br><br>
 
 ### `project.getState(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {String} the state<br><br>
+* `data` {Object} will consist of {String} locationState<br><br>
 
 ### `project.getCountry(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {String} the country<br><br>
+* `data` {Object} will consist of {String} locationCountry<br><br>
 
 ### `project.getUpdates(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Number} the number of updates<br><br>
+* `data` {Object} will consist of {Number} otherUpdates<br><br>
 
 ### `project.getComments(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Number} the number of comments<br><br>
+* `data` {Object} will consist of {Number} otherComments<br><br>
 
 ### `project.getProjectsCreated(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Number} the number of projects done by the creator<br><br>
+* `data` {Object} will consist of {Number} otherProjectsCreated<br><br>
 
 ### `project.getProjectsBacked(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Number} the number of projects backed by the creator<br><br>
+* `data` {Object} will consist of {Number} otherProjectsBacked<br><br>
 
 ### `project.getWebsiteUrl(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {String} the website url<br><br>
+* `data` {Object} will consist of {String} otherWebsiteURL<br><br>
 
 ### `project.getNumImages(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Number} the number of images used in the project's profile page<br><br>
+* `data` {Object} will consist of {Number} mediaNumImages<br><br>
 
 ### `project.getImages(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Array} an array of images used in the project<br><br>
+* `data` {Object} will consist of {Array} mediaImages<br><br>
 
 ### `project.getNumPledges(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Number} the number of pledges<br><br>
+* `data` {Object} will consist of {Number} pledgesNumPledges<br><br>
 
 ### `project.getNumLimitedPledges(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Number} the number of pledges that had limited offerings<br><br>
+* `data` {Object} will consist of {Number} pledgesNumLimitedPledges<br><br>
 
 ### `project.getPledgeAmounts(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Array} an array of the pledge amounts used<br><br>
+* `data` {Object} will consist of {Array} pledgesAmounts<br><br>
 
 ### `project.getPledgesData(callback)`
 * @param {Function} `callback(err, data)`<br>
-* @return {Object} a nested json of individual pledge data<br><br>
+* `data` {Object} will consist of {Object} pledgesData<br><br>
