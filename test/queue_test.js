@@ -4,21 +4,21 @@ var Queue = require('../lib/queue'),
     assert = require('assert');
 
 
-// initialize queue
+// Initialize queue
 var queue = Queue();
 
-// test enqueue(node)
+// Test enqueue(node)
 assert.deepEqual(queue.enqueue(1), undefined, ['queue.enqueue(1) !== undefined']);
 assert.deepEqual(queue.enqueue(2), undefined, ['queue.enqueue(2) !== undefined']);
 
-// test size()
+// Test size
 assert.deepEqual(queue.size(), 2, ['queue.size() !== 2']);
 
-// test toArray()
+// Test toArray
 assert.deepEqual(queue.toArray(), [1, 2], ['queue.toArray() !== [1, 2]']);
 
-// test dequeue()
+// Test dequeue
 assert.deepEqual(queue.dequeue(), 1, ['queue.dequeue() !== 1']);
 
-// test isEmpty()
+// Test isEmpty
 assert.deepEqual(queue.isEmpty(), false, ['queue.isEmpty() !== false']);
