@@ -9,7 +9,7 @@ var KS = require('../index'),
 var crawler = new KS.project({ url: 'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters' });
 
 
-test('Unit Tests', function (t) {
+test('[Static] Unit Tests', function (t) {
 
   // Make request (crawl)
   crawler.request(function onRequest (err, data) {
@@ -78,7 +78,7 @@ test('Unit Tests', function (t) {
       t.deepEqual(data.otherUpdates, 23, 'otherUpdates');
       t.deepEqual(data.otherComments, 174, 'otherComments');
       t.deepEqual(data.otherProjectsCreated, 5, 'otherProjectsCreated');
-      t.deepEqual(data.otherProjectsBacked, 186, 'otherProjectsBacked');
+      t.deepEqual(data.otherProjectsBacked, 188, 'otherProjectsBacked');
       t.deepEqual(data.otherWebsiteURL, 'http://www.Maxistentialism.com', 'otherWebsiteURL');
     });
 
