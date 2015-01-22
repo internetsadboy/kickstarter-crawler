@@ -1,11 +1,11 @@
 {
-  "name":"kickstarter-crawler",
-  "version":"0.1.0",
-  "description":"kickstarter bot - returns 35+ data points.",
-  "main":"index.js",
-  "homepage":"https://github.com/ghostsnstuff/kickstarter-crawler",
-  "authors":"Jared Halpert <jaredhalpert90@gmail.com> (https://github.com/ghostsnstuff)",
-  "keywords":[
+  "name": "kickstarter-crawler",
+  "version": "0.1.0",
+  "description": "kickstarter bot - returns 35+ data points.",
+  "main": "index.js",
+  "homepage": "https://github.com/ghostsnstuff/kickstarter-crawler",
+  "authors": "Jared Halpert <jaredhalpert90@gmail.com> (https://github.com/ghostsnstuff)",
+  "keywords": [
     "kickstarter",
     "crawler",
     "thing",
@@ -15,8 +15,8 @@
     "bot"
   ],
   "scripts": {
-    "test":"node test/test.js"
-   },
+    "test": "node test/static-spec && node test/type-spec && node test/queue-spec"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ghostsnstuff/kickstarter-crawler.git"
@@ -24,20 +24,21 @@
   "bugs": {
     "url": "https://github.com/ghostsnstuff/kickstarter-crawler/issues"
   },
-  "license":"MIT",
+  "license": "MIT",
   "dependencies": {
     "request": ">= 0.0.1",
     "cheerio": ">= 0.0.12",
-    "colors":"*",
-    "tape":"*",
-    "crapi":"~0.0.1",
-    "unix-cat":"*"
+    "colors": "*",
+    "tape": "*",
+    "crapi": "~0.0.1"
   },
-  "preferGlobal":"true",
+  "preferGlobal": "true",
   "bin": {
-    "ks":"./lib/cli.js"
+    "ks": "./lib/cli.js"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  },
   "engines": {
     "node": "*"
   }
