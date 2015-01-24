@@ -1,6 +1,6 @@
 {
   "name": "kickstarter-crawler",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "kickstarter bot - returns 35+ data points.",
   "main": "index.js",
   "homepage": "https://github.com/ghostsnstuff/kickstarter-crawler",

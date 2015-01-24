@@ -74,7 +74,7 @@ project.request(function onRequest (err, data) {
 
 ### `config`
 * {Object} project configurations<br>
-* Configurations necessary to instatiate the project constructor<br><br>
+* Configurations necessary to instantiate the project constructor<br><br>
 
 ### `config.url`
 * {String} project profile url<br><br>
