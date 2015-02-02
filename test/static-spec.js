@@ -78,7 +78,9 @@ test('[Static] Unit Tests', function (t) {
       t.deepEqual(data.otherUpdates, 23, 'otherUpdates');
       t.deepEqual(data.otherComments, 174, 'otherComments');
       t.deepEqual(data.otherProjectsCreated, 5, 'otherProjectsCreated');
-      t.deepEqual(data.otherProjectsBacked, 188, 'otherProjectsBacked');
+
+      // Frequently changes, test type
+      t.deepEqual(typeof data.otherProjectsBacked, 'number' , 'otherProjectsBacked');
       t.deepEqual(data.otherWebsiteURL, 'http://www.Maxistentialism.com', 'otherWebsiteURL');
     });
 
