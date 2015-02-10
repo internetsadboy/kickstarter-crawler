@@ -6,7 +6,7 @@ test = require('tape');
 
 
 // Initialize the crawler
-var crawler = new KS.project({ url: 'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters' });
+var crawler = new KS.project('https://www.kickstarter.com/projects/maxtemkin/philosophy-posters');
 
 
 test('[Type] Unit Tests', function (t) {

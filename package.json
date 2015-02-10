@@ -1,14 +1,13 @@
 {
   "name": "kickstarter-crawler",
-  "version": "0.1.1",
-  "description": "kickstarter bot - returns 35+ data points.",
+  "version": "0.1.2",
+  "description": "Crawl kickstarter project data (30 + 8n data points - where n is the # of pledges).",
   "main": "index.js",
   "homepage": "https://github.com/ghostsnstuff/kickstarter-crawler",
   "authors": "Jared Halpert <jaredhalpert90@gmail.com> (https://github.com/ghostsnstuff)",
   "keywords": [
     "kickstarter",
     "crawler",
-    "thing",
     "crowdfunding",
     "data",
     "spider",
@@ -26,18 +25,16 @@
   },
   "license": "MIT",
   "dependencies": {
-    "request": ">= 0.0.1",
-    "cheerio": ">= 0.0.12",
+    "request": "*",
+    "cheerio": "*",
     "colors": "*",
     "tape": "*",
-    "crapi": "~0.0.1"
+    "crapi": "*",
+    "is-url": "*"
   },
   "preferGlobal": "true",
   "bin": {
     "ks": "./lib/cli.js"
-  },
-  "devDependencies": {
-    "grunt": "^0.4.5"
   },
   "engines": {
     "node": "*"

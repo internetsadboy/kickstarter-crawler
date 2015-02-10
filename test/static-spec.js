@@ -1,12 +1,13 @@
 'use strict';
 
 
-var KS = require('../index'),
+var isUrl = require('is-url'),
+    KS = require('../index'),
     test = require('tape');
 
 
 // Initialize the crawler
-var crawler = new KS.project({ url: 'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters' });
+var crawler = new KS.project('https://www.kickstarter.com/projects/maxtemkin/philosophy-posters');
 
 
 test('[Static] Unit Tests', function (t) {
@@ -29,7 +30,9 @@ test('[Static] Unit Tests', function (t) {
       t.deepEqual(data.generalSubCategory, 'Graphic Design', 'generalSubCategory');
       t.deepEqual(data.generalProjectURL, 'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters', 'generalProjectURL');
       t.deepEqual(data.generalCreatorURL, 'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters/creator_bio', 'generalCreatorURL');
-      t.deepEqual(data.generalAvatarURL, 'https://s3.amazonaws.com/ksr/avatars/21469/JanaAvatar_big.small.jpg?1348789612', 'generalAvatarURL');
+
+      // Subject to change, assert url
+      t.deepEqual(isUrl(data.generalAvatarURL), true, 'generalAvatarURL');
       t.deepEqual(data.generalVideoURL, 'https://d2pq0u4uni88oo.cloudfront.net/projects/71739/video-84680-h264_high.mp4', 'generalVideoURL');
     });
 
