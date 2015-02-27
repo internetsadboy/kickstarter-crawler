@@ -1,12 +1,10 @@
 ## kickstarter-crawler
 
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/ghostsnstuff/kickstarter_crawler?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![NPM](https://nodei.co/npm/kickstarter-crawler.png?downloads=true)](https://nodei.co/npm/kickstarter-crawler/)
 
-##### :pizza: Returns **30 + 8n** data points - where n is the number of pledges
+##### Returns **30 + 8n** data points - where n is the number of pledges
 
-##### :pizza: Analyze **61,356** kickstarter projects using [crapi](https://github.com/ghostsnstuff/crapi)
+##### Analyze **61,356** kickstarter projects using [crapi](https://github.com/ghostsnstuff/crapi)
 
 ## Installation
 
