@@ -21,7 +21,7 @@ test('[Type] Unit Tests', function (t) {
 
     // General tests
     t.test('[General]', function onGeneral (t) {
-      t.plan(8);
+      t.plan(9);
 
       t.deepEqual(typeof data.generalTitle, 'string', 'generalTitle');
       t.deepEqual(typeof data.generalCreator, 'string', 'generalCreator');
@@ -31,6 +31,7 @@ test('[Type] Unit Tests', function (t) {
       t.deepEqual(typeof data.generalCreatorURL, 'string', 'generalCreatorURL');
       t.deepEqual(typeof data.generalAvatarURL, 'string', 'generalAvatarURL');
       t.deepEqual(typeof data.generalVideoURL, 'string', 'generalVideoURL');
+      t.deepEqual(typeof data.generalDescription, 'string', 'generalDescription');
     });
 
     // Location tests

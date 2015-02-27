@@ -22,12 +22,13 @@ test('[Static] Unit Tests', function (t) {
 
     // General tests
     t.test('[General]', function onGeneral (t) {
-      t.plan(8);
+      t.plan(9);
 
       t.deepEqual(data.generalTitle, 'Philosophy Posters', 'generalTitle');
       t.deepEqual(data.generalCreator, 'Max Temkin', 'generalCreator');
       t.deepEqual(data.generalCategory, 'Design', 'generalCategory');
       t.deepEqual(data.generalSubCategory, 'Graphic Design', 'generalSubCategory');
+      t.deepEqual(data.generalDescription, 'Ten giant philosophy posters with big ideas presented simply.', 'generalDescription');
       t.deepEqual(data.generalProjectURL, 'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters', 'generalProjectURL');
       t.deepEqual(data.generalCreatorURL, 'https://www.kickstarter.com/projects/maxtemkin/philosophy-posters/creator_bio', 'generalCreatorURL');
 
