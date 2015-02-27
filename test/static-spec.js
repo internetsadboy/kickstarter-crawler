@@ -80,7 +80,7 @@ test('[Static] Unit Tests', function (t) {
 
       t.deepEqual(data.otherUpdates, 23, 'otherUpdates');
       t.deepEqual(data.otherComments, 174, 'otherComments');
-      t.deepEqual(data.otherProjectsCreated, 5, 'otherProjectsCreated');
+      t.deepEqual(typeof data.otherProjectsCreated, 'number', 'otherProjectsCreated');
 
       // Frequently changes, test type
       t.deepEqual(typeof data.otherProjectsBacked, 'number' , 'otherProjectsBacked');
