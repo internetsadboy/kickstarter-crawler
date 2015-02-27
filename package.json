@@ -1,6 +1,6 @@
 {
   "name": "kickstarter-crawler",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Crawl kickstarter project data (30 + 8n data points - where n is the # of pledges).",
   "main": "index.js",
   "homepage": "https://github.com/ghostsnstuff/kickstarter-crawler",
