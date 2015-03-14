@@ -91,7 +91,7 @@ test('[Static] Unit Tests - philosphy posters', function (t) {
 
     // Pledges tests
     t.test('[Pledges]', function onPledges (t) {
-      t.plan(12);
+      t.plan(14);
 
       t.deepEqual(data.pledgesNumPledges, 2, 'pledgesNumPledges');
       t.deepEqual(data.pledgesNumLimited, 0, 'pledgesNumLimited');
@@ -107,6 +107,8 @@ test('[Static] Unit Tests - philosphy posters', function (t) {
       t.deepEqual(pledge.estimatedDelivery, '2012-05-01', 'estimatedDelivery');
       t.deepEqual(pledge.estimatedDeliveryISO, '2012-05-01T00:00:00.000Z', 'estimatedDeliveryISO');
       t.deepEqual(pledge.description, 'One print of your choice, signed, numbered, and shipped to your doorstep in the United States.', 'description')
+      t.deepEqual(pledge.limited, false, 'limited');
+      t.deepEqual(pledge.numLeft, Infinity, 'numWords');
       t.deepEqual(pledge.numWords, 16, 'numWords');
       t.deepEqual(pledge.numAllCaps, 0, 'numAllCaps');
       t.deepEqual(pledge.soldOut, false, 'available');
@@ -196,15 +198,15 @@ test('[Static] Unit Tests - original pebble', function (t) {
 
     // Pledges tests
     t.test('[Pledges]', function onPledges (t) {
-      t.plan(12);
+      t.plan(14);
 
       t.deepEqual(data.pledgesNumPledges, 11, 'pledgesNumPledges');
-      t.deepEqual(data.pledgesNumLimited, 0, 'pledgesNumLimited');
+      t.deepEqual(data.pledgesNumLimited, 10, 'pledgesNumLimited');
       t.deepEqual(data.pledgesAmounts, [ 1, 99, 115, 125, 220, 235, 240, 550, 1000, 1250, 10000 ], 'pledgesAmounts');
 
       // Individual pledge
       var pledge = data.pledgesData[1];
-      // console.log(pledge);
+
       // Pledge specific tests
       t.deepEqual(pledge.amount, 99, 'amount');
       t.deepEqual(pledge.numBackers, 200, 'numBackers');
@@ -212,6 +214,8 @@ test('[Static] Unit Tests - original pebble', function (t) {
       t.deepEqual(pledge.estimatedDelivery, '2012-09-01', 'estimatedDelivery');
       t.deepEqual(pledge.estimatedDeliveryISO, '2012-09-01T00:00:00.000Z', 'estimatedDeliveryISO');
       t.deepEqual(pledge.description, 'EARLY BIRDS Help us get started! One Jet Black Pebble watch. This watch will retail for more than $150. Free shipping to USA. (Add $10 for shipping to Canada, $15 for international shipping.)', 'description')
+      t.deepEqual(pledge.limited, true, 'limited');
+      t.deepEqual(pledge.numLeft, Infinity, 'numLeft');
       t.deepEqual(pledge.numWords, 33, 'numWords');
       t.deepEqual(pledge.numAllCaps, 3, 'numAllCaps');
       t.deepEqual(pledge.soldOut, true, 'soldOut');
