@@ -1,6 +1,6 @@
 ## kickstarter-crawler
 
-[](https://travis-ci.org/ghostsnstuff/kickstarter-crawler.svg?branch=master)
+[![Build Status](https://travis-ci.org/ghostsnstuff/kickstarter-crawler.svg?branch=master)](https://travis-ci.org/ghostsnstuff/kickstarter-crawler)
 
 [![NPM](https://nodei.co/npm/kickstarter-crawler.png?downloads=true)](https://nodei.co/npm/kickstarter-crawler/)
 
