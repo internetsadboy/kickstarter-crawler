@@ -1,5 +1,7 @@
 ## kickstarter-crawler
 
+[](https://travis-ci.org/ghostsnstuff/kickstarter-crawler.svg?branch=master)
+
 [![NPM](https://nodei.co/npm/kickstarter-crawler.png?downloads=true)](https://nodei.co/npm/kickstarter-crawler/)
 
 ##### Returns **30 + 8n** data points - where n is the number of pledges
