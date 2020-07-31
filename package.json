@@ -9,11 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
-    "crapi": "0.0.2",
-    "is-html": "^2.0.0"
+    "axios": "^0.19.2"
   },
-  "devDependencies": {
-    "cheerio": "^1.0.0-rc.3"
-  }
+  "devDependencies": {}
 }
