@@ -18,7 +18,8 @@ result.then((data) => console.log(data));
   enddate: 'May 4, 2012',
   funding: '$41,167',
   goal: '$2,000',
-  backers: '1,393'
+  backers: '1,393',
+  pledges: [ [ 20, 1003 ], [ 30, 359 ] ]
 }
 ```
 
