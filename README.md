@@ -1,3 +1,4 @@
+# Getting started
 ```javascript
 const kickstarterCrawler = require('kickstarter-crawler');
 
@@ -19,5 +20,14 @@ result.then((data) => console.log(data));
   goal: '$2,000',
   backers: '1,393'
 }
+```
 
+# Insallation
+```
+npm i kickstarter-crawler
+```
+
+# Test
+```
+npm run test
 ```
