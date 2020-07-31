@@ -4,12 +4,15 @@
   "description": "Kickstarter crawler that does what you think it would",
   "main": "index.js",
   "scripts": {
-    "test": ""
+    "test": "mocha index.test.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "mocha": "^8.1.0"
+  }
 }
