@@ -105,5 +105,28 @@ function parseHTML(res) {
   data.goal = goal;
   data.backers = backers;
 
+  const n = $('ol li .pledge__backer-stats').children().length;
+  let pledges = [];
+
+  for (let i = 0; i < n; i++) {
+    let amount =
+      $('ol li .pledge__amount')
+        .eq(i)
+        .text();
+
+    amount = amount && amount.match(/[0-9]{2,}/)[0];
+
+    let backers =
+      $('ol li .pledge__backer-stats')
+        .eq(i)
+        .text();
+
+    backers = backers && backers.replace(/[^0-9]/g, '');
+
+    pledges.push([Number(amount), Number(backers)]);
+  }
+
+  data.pledges = pledges;
+
   return data;
 }
