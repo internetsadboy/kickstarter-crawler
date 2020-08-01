@@ -105,7 +105,7 @@ function parseHTML(res) {
   data.goal = goal;
   data.backers = backers;
 
-  const n = $('ol li .pledge__backer-stats').children().length;
+  const n = $('ol li .pledge__backer-stats').length;
   let pledges = [];
 
   for (let i = 0; i < n; i++) {
@@ -114,7 +114,8 @@ function parseHTML(res) {
         .eq(i)
         .text();
 
-    amount = amount && amount.match(/[0-9]{2,}/)[0];
+    amount = amount && amount.match(/[1-9]+[,]*[0-9]*/)[0];
+    amount = amount.replace(/,/, '');
 
     let backers =
       $('ol li .pledge__backer-stats')
@@ -122,6 +123,7 @@ function parseHTML(res) {
         .text();
 
     backers = backers && backers.replace(/[^0-9]/g, '');
+    backers = backers.replace(/,/, '');
 
     pledges.push([Number(amount), Number(backers)]);
   }
