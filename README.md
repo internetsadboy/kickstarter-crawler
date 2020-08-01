@@ -13,12 +13,12 @@ result.then((data) => console.log(data));
   description: 'Ten giant philosophy posters with big ideas presented simply.',
   category: 'Graphic Design',
   location: [ 'Chicago', 'IL' ],
-  duration: '30',
+  duration: 30,
   startdate: 'Apr 4, 2012',
   enddate: 'May 4, 2012',
-  funding: '$41,167',
-  goal: '$2,000',
-  backers: '1,393',
+  funding: 41167,
+  goal: 2000,
+  backers: 1393,
   pledges: [ [ 20, 1003 ], [ 30, 359 ] ]
 }
 ```

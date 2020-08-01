@@ -58,12 +58,13 @@ function parseHTML(res) {
       .text()
       .trim();
 
-  const duration =
+  let duration =
     $('.NS_campaigns__funding_period .f5')
       .text()
-      .trim()
-      .split('\n')[1]
-      .replace(/[^0-9]/g, '');
+      .trim();
+
+  duration = duration && duration.split('\n')[1];
+  duration = Number(duration.replace(/[^0-9]/g, ''));
 
   const startdate =
     $('.NS_campaigns__funding_period time')
@@ -77,33 +78,26 @@ function parseHTML(res) {
       .text()
       .trim();
 
-  const funding =
+  let funding =
     $('.money')
     .eq(1)
     .text();
 
-  const goal =
+  funding = funding && Number(funding.replace(/[^0-9]+/g, ''));
+
+  let goal =
     $('.money')
       .eq(2)
       .text();
 
-  const backers =
-    $('h3.mb0')
-      .text()
-      .trim()
-      .split('\n')[2];
+  goal = goal && Number(goal.replace(/[^0-9]+/g, ''));
 
-  data.title = title;
-  data.creator = creator;
-  data.description = description;
-  data.category = category;
-  data.location = location;
-  data.duration = duration;
-  data.startdate = startdate;
-  data.enddate = enddate;
-  data.funding = funding;
-  data.goal = goal;
-  data.backers = backers;
+  let backers =
+    $('h3.mb0')
+      .eq(1)
+      .text();
+
+  backers = backers && Number(backers.replace(/[^0-9]/g, ''));
 
   const n = $('ol li .pledge__backer-stats').length;
   let pledges = [];
@@ -128,6 +122,17 @@ function parseHTML(res) {
     pledges.push([Number(amount), Number(backers)]);
   }
 
+  data.title = title;
+  data.creator = creator;
+  data.description = description;
+  data.category = category;
+  data.location = location;
+  data.duration = duration;
+  data.startdate = startdate;
+  data.enddate = enddate;
+  data.funding = funding;
+  data.goal = goal;
+  data.backers = backers;
   data.pledges = pledges;
 
   return data;
