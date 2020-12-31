@@ -76,8 +76,6 @@ function parseHTML(res) {
         .text()
         .trim();
 
-    // console.log(duration)
-
     duration = duration && duration.split('\n')[1];
     duration = Number(duration.replace(/[^0-9]/g, ''));
 
@@ -148,7 +146,6 @@ function parseHTML(res) {
 
     pledges.push([Number(amount), Number(backers)]);
   }
-
 
   data.title = title;
   data.creator = creator;
