@@ -29,6 +29,7 @@ function parseHTML(res) {
   let startdate;
   let enddate;
   let pledges;
+  let thumbnail;
 
   // parse html ie "load"
   const $ = cheerio.load(res.data);
@@ -147,6 +148,8 @@ function parseHTML(res) {
     pledges.push([Number(amount), Number(backers)]);
   }
 
+  thumbnail = $('.js-feature-image').attr('src') || $('.aspect-ratio--object').attr('src');
+
   data.title = title;
   data.creator = creator;
   data.description = description;
@@ -159,6 +162,8 @@ function parseHTML(res) {
   data.goal = goal;
   data.backers = backers;
   data.pledges = pledges;
+  data.thumbnail = thumbnail;
+
 
   return data;
 }
