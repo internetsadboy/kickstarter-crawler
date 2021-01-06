@@ -20,7 +20,9 @@ describe('kickstarter-crawler test suite', () => {
         goal: 2000,
         backers: 1393,
         pledges: [ [ 20, 1003 ], [ 30, 359 ] ],
-        thumbnail: 'https://ksr-ugc.imgix.net/assets/011/314/328/15f265a2407f6dcb311ad61bad886b01_original.jpg?ixlib=rb-2.1.0&crop=faces&w=1552&h=873&fit=crop&v=1463680857&auto=format&frame=1&q=92&s=c787b7ea241aefb1f14a5acf9b939125'
+        thumbnail: 'https://ksr-ugc.imgix.net/assets/011/314/328/15f265a2407f6dcb311ad61bad886b01_original.jpg?ixlib=rb-2.1.0&crop=faces&w=1552&h=873&fit=crop&v=1463680857&auto=format&frame=1&q=92&s=c787b7ea241aefb1f14a5acf9b939125',
+        project_url: 'https://kickstarter.com/projects/maxtemkin/philosophy-posters',
+        videoDuration: '02:08'
       });
     });
   });

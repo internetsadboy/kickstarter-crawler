@@ -1,5 +1,8 @@
 const cheerio = require('cheerio');
 const axios = require('axios');
+const validUrl = require('valid-url');
+const {getVideoDurationInSeconds} = require('get-video-duration');
+const {URL} = require('url');
 
 
 module.exports = async function kickstarterCrawler(url) {
@@ -7,15 +10,53 @@ module.exports = async function kickstarterCrawler(url) {
     let res = await axios.get(url);
 
     if (res.data) {
-      let data = parseHTML(res);
-      return data;
+      // parse html ie "load"
+      const $ = cheerio.load(res.data);
+
+      // syncronous operations
+      let data = parseHTML(res, $);
+
+      return new Promise((resolve, reject) => {
+        data.then((d) => {
+          let video_url = $('#video_pitch video source').attr('src');
+          if (validUrl.isWebUri(video_url)) {
+            let result = getVideoDurationInSeconds(video_url).then((duration) => {
+              let min = 0, sec = 0;
+
+              // convert from seconds
+              duration = Math.round(duration);
+              min = Math.floor(duration / 60);
+              sec = duration % 60;
+
+              // format minutes
+              if (min < 10) {
+                min = '0' + min;
+              } else {
+                min = min.toString();
+              }
+              // format seconds
+              if (sec < 10) {
+                sec = '0' + sec;
+              } else {
+                sec = sec.toString();
+              }
+              d.videoDuration = `${min}:${sec}`;
+              resolve(d);
+            });
+          } else {
+            d.videoDuration = null;
+            resolve(d);
+          }
+        }).catch(console.error);
+      })
+
     }
   } catch(err) {
     console.error(err);
   }
 }
 
-function parseHTML(res) {
+async function parseHTML(res, $) {
   let data = {};
   let title;
   let creator;
@@ -30,9 +71,7 @@ function parseHTML(res) {
   let enddate;
   let pledges;
   let thumbnail;
-
-  // parse html ie "load"
-  const $ = cheerio.load(res.data);
+  let project_url;
 
   const was_cancelled = $('#main_content').hasClass('Campaign-state-canceled');
 
@@ -150,6 +189,10 @@ function parseHTML(res) {
 
   thumbnail = $('.js-feature-image').attr('src') || $('.aspect-ratio--object').attr('src');
 
+  let relative_project_url = $('.hero__link').eq(0).attr('href');
+  let url_object = relative_project_url && new URL(relative_project_url, 'https://kickstarter.com');
+  project_url = url_object && url_object.href || undefined;
+
   data.title = title;
   data.creator = creator;
   data.description = description;
@@ -163,7 +206,7 @@ function parseHTML(res) {
   data.backers = backers;
   data.pledges = pledges;
   data.thumbnail = thumbnail;
-
+  data.project_url = project_url;
 
   return data;
 }
