@@ -179,10 +179,11 @@ async function parseHTML(res, $) {
     let backers =
       $('ol li .pledge__backer-stats')
         .eq(i)
-        .text();
+        .text()
+        .split('\n')
+        .filter(text => text.length > 0);
 
-    backers = backers && backers.replace(/[^0-9]/g, '');
-    backers = backers.replace(/,/, '');
+    backers = backers[0] && backers[0].replace(/[^0-9]/g, '');
 
     pledges.push([Number(amount), Number(backers)]);
   }

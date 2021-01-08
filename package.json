@@ -1,6 +1,6 @@
 {
   "name": "kickstarter-crawler",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Kickstarter crawler that does what you think it would",
   "main": "index.js",
   "scripts": {
