@@ -183,7 +183,13 @@ async function parseHTML(res, $) {
         .split('\n')
         .filter(text => text.length > 0);
 
-    backers = backers[0] && backers[0].replace(/[^0-9]/g, '');
+    // adjust for edge case for unavailable rewards
+    backers =
+      'Reward no longer available' === backers[0] ?
+        backers[1] :
+        backers[0];
+
+    backers = backers && backers.replace(/[^0-9]/g, '');
 
     pledges.push([Number(amount), Number(backers)]);
   }
